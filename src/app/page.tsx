@@ -118,9 +118,7 @@ export default function Home() {
             }
           ]}
         />
-     
-      <SpheresLanding />
-      <BottomText text="Join the creative universe" fontSize="6rem" fontWeight={700} />
+     <BottomText text="Join the creative universe" fontSize="6rem" fontWeight={700} />
     </div>
   );
 }

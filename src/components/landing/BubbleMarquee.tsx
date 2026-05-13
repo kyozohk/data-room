@@ -3,19 +3,20 @@
 import React, { useMemo } from 'react';
 import styles from './BubbleMarquee.module.scss';
 
-// Define the bubble row colors based on the image
+// Bubble row colours — KyozoVerse warm palette. Each category gets a
+// muted earth-tone border that sits comfortably on the #FDFCFA cream.
 const bubbleRowColors = {
-  music: '#3b82f6',        // Blue accent for music
-  artMovements: '#8b5cf6', // Purple accent for art movements
-  crafts: '#f97316',       // Orange accent for crafts
-  fashion: '#ec4899',      // Pink accent for fashion
-  performance: '#14b8a6',  // Teal accent for performance
-  techno: '#3b82f6',       // Blue accent for techno
-  futurism: '#6192D1',     // Purple accent for futurism
-  classicism: '#BB6DC9',   // Purple accent for classicism
-  jewelry: '#FFD861',      // Orange accent for jewelry
-  vintage: '#C7736C',      // Pink accent for vintage
-  minimal: '#EEF840',      // Teal accent for minimal
+  music:        '#A88B6A', // gold (the brand primary accent)
+  artMovements: '#88796E', // taupe (headline tone)
+  crafts:       '#B8775A', // rust
+  fashion:      '#C19A6B', // softer gold
+  performance:  '#8EA38C', // sage
+  techno:       '#A88B6A',
+  futurism:     '#88796E',
+  classicism:   '#A89380', // light taupe
+  jewelry:      '#C9A668', // wheat
+  vintage:      '#B8775A',
+  minimal:      '#8EA38C',
 };
 
 interface BubbleItem {

@@ -11,22 +11,24 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/**
+ * Theme toggle has been removed from the UI; the Kyozo brand is light only.
+ * The provider exists for backward compat with components that call useTheme().
+ */
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Theme toggle has been removed from the UI; force dark as the only theme.
-  const [theme, setTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>('light');
 
   useEffect(() => {
-    // Always enforce dark, ignoring any previously-cached preference.
-    document.documentElement.setAttribute('data-theme', 'dark');
+    document.documentElement.setAttribute('data-theme', 'light');
     try {
-      localStorage.setItem('theme', 'dark');
+      localStorage.setItem('theme', 'light');
     } catch {
-      /* ignore storage errors (private mode etc.) */
+      /* ignore */
     }
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
   };
 
   return (

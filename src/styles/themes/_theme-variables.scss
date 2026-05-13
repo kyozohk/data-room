@@ -1,52 +1,107 @@
-// Theme variables
+// Theme variables — KyozoVerse-aligned warm cream palette.
+// (Mirrors /Development/Kyozo/KyozoVerse/src/app/globals.css.)
 
-// Light theme mixin
+// Light theme mixin — this is the locked Kyozo brand palette.
 @mixin light-theme {
-  --background-image: url('/light-texture-bg.png');
-  --background-color: #fff;
-  --text-color: #333;
-  --heading-color: #222;
-  // --card-bg: rgba(255, 255, 255, 1);
-  --card-bg: #eeeeee;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --button-bg: #333;
-  --button-text: #fff;
-  --button-bg-hover: #555;
-  --link-color: #0070f3;
-  --link-hover-color: #0051a8;
-  --accent-pink: #e94e8a;
-  --accent-pink-rgb: 233, 78, 138;
-  --accent-purple: #8a4ee9;
-  --accent-blue: #4e8ae9;
-  --accent-blue-rgb: 78, 138, 233;
-  --error-color: #e94e4e;
-  --error-color-rgb: 233, 78, 78;
-  --border-color: #e0e0e0;
-  --input-bg: #f9f9f9;
-  --text-secondary: #666;
+  // Surfaces
+  --background-image: none;
+  --background-color: #FDFCFA;            // warm cream
+  --background-color-rgb: 253, 252, 250;
+  --lighter-background-color: #FFFFFF;
+  --page-bg-color: #F9FAFB;
+  --page-content-bg: #FDFCFA;
+  --page-content-border: #E7E7E6;
+
+  // Text
+  --text-color: #5E4B3B;                  // warm brown body
+  --heading-color: #88796E;               // taupe headings
+  --text-secondary: #8D7059;              // warm taupe muted
+
+  // Cards
+  --card-bg: #FDFCFA;
+  --card-shadow: 0 4px 12px rgba(94, 75, 59, 0.07), 0 1px 3px rgba(94, 75, 59, 0.04);
+
+  // Buttons / interactive
+  --button-bg: #5E4B3B;                   // brown primary CTA
+  --button-text: #FFFFFF;
+  --button-bg-hover: #88796E;
+  --primary-bg: #E5DFD1;                  // beige chip / soft button
+  --primary-text: #5E4B3B;
+
+  // Borders / inputs
+  --border-color: #D4C5B4;                // warm beige border
+  --border-soft: #E7E7E6;
+  --input-bg: #FFFFFF;
+
+  // Links
+  --link-color: #6F5B47;
+  --link-hover-color: #5E4B3B;
+
+  // Accents (warm gold / rust / sage — replaces the old pink/purple/blue)
+  --accent-gold: #A88B6A;
+  --accent-gold-soft: rgba(168, 139, 106, 0.12);
+  --accent-rust: #B8775A;
+  --accent-sage: #8EA38C;
+  --accent-cream: #E5DFD1;
+
+  // Legacy aliases — kept so existing components that reference
+  // --accent-pink / --accent-purple / --accent-blue still render
+  // (now mapped to warm hues).
+  --accent-pink: #B8775A;
+  --accent-pink-rgb: 184, 119, 90;
+  --accent-purple: #A88B6A;
+  --accent-blue: #8EA38C;
+  --accent-blue-rgb: 142, 163, 140;
+
+  // Status
+  --error-color: #C0392B;
+  --error-color-rgb: 192, 57, 43;
+  --success-color: #6E8B6A;
 }
 
-// Dark theme mixin
+// Dark theme mixin — fallback only. Kyozo brand is light.
 @mixin dark-theme {
-  --background-image: url('/dark-texture-bg.png');
-  --background-color: #000;
-  --text-color: #e0e0e0;
-  --heading-color: #f0f0f0;
-  --card-bg: #181818;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --button-bg: #f0f0f0;
-  --button-text: #222;
-  --button-bg-hover: #ccc;
-  --link-color: #3694ff;
-  --link-hover-color: #5cacff;
-  --accent-pink: #ff6ea9;
-  --accent-pink-rgb: 255, 110, 169;
-  --accent-purple: #a76eff;
-  --accent-blue: #6ea7ff;
-  --accent-blue-rgb: 110, 167, 255;
-  --error-color: #ff6e6e;
-  --error-color-rgb: 255, 110, 110;
-  --border-color: #333;
-  --input-bg: #111;
-  --text-secondary: #999;
+  --background-image: none;
+  --background-color: #1A1612;            // warm-tinted dark
+  --background-color-rgb: 26, 22, 18;
+  --lighter-background-color: #221C16;
+  --page-bg-color: #15110D;
+  --page-content-bg: #1A1612;
+  --page-content-border: #2B241D;
+
+  --text-color: #E5DFD1;
+  --heading-color: #F5EFE3;
+  --text-secondary: #C0B5A3;
+
+  --card-bg: #221C16;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+
+  --button-bg: #F5EFE3;
+  --button-text: #1A1612;
+  --button-bg-hover: #E5DFD1;
+  --primary-bg: #3A2F25;
+  --primary-text: #F5EFE3;
+
+  --border-color: #3A2F25;
+  --border-soft: #2B241D;
+  --input-bg: #2B241D;
+
+  --link-color: #D4C5B4;
+  --link-hover-color: #F5EFE3;
+
+  --accent-gold: #C9A668;
+  --accent-gold-soft: rgba(201, 166, 104, 0.15);
+  --accent-rust: #D4836E;
+  --accent-sage: #A7BCA1;
+  --accent-cream: #3A2F25;
+
+  --accent-pink: #D4836E;
+  --accent-pink-rgb: 212, 131, 110;
+  --accent-purple: #C9A668;
+  --accent-blue: #A7BCA1;
+  --accent-blue-rgb: 167, 188, 161;
+
+  --error-color: #E07A6E;
+  --error-color-rgb: 224, 122, 110;
+  --success-color: #A7BCA1;
 }
