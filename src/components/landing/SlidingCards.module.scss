@@ -1,0 +1,82 @@
+.slidingCardsContainer {
+  position: relative;
+  width: 100%;
+  z-index: 5; /* Increased z-index to ensure it's above background elements */
+}
+
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: visible; /* Allow horizontal overflow if needed */
+  z-index: 1;
+}
+
+.cardWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  transition: transform 0.1s ease-out;
+  transform-origin: center center;
+  
+  // Add subtle shadow for depth when cards overlap
+  // &:not(:first-child) {
+  //   box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.1);
+  // }
+}
+
+.card {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  
+  &.blue {
+    background: linear-gradient(135deg, #3b82f6 0%, #4a5af8 100%);
+  }
+  
+  &.green {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+  
+  &.purple {
+    background: linear-gradient(135deg, #ec4899 0%, #8b5cf6 100%);
+  }
+  
+  &.rose {
+    background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  }
+}
+
+.cardContent {
+  text-align: center;
+  max-width: 800px;
+}
+
+.cardTitle {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  
+  @media (min-width: 768px) {
+    font-size: 4.5rem;
+  }
+}
+
+.cardText {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+  
+  @media (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+}

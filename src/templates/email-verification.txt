@@ -1,0 +1,25 @@
+KYOZO - Email Verification
+==========================
+
+Welcome to Kyozo!
+
+To complete your account setup and ensure the security of your account, please verify your email address using the verification code below.
+
+Your Verification Code: {{VERIFICATION_CODE}}
+
+This code expires in 10 minutes.
+
+How to use this code:
+1. Return to the Kyozo signup page
+2. Enter the 6-digit code exactly as shown above
+3. Click "Verify" to complete your account setup
+
+SECURITY NOTICE: If you didn't request this verification code, please ignore this email. Your account remains secure and no action is needed.
+
+Having trouble? If you're unable to verify your email, please contact our support team and we'll be happy to help you get started with Kyozo.
+
+---
+This email was sent to {{USER_EMAIL}} because you requested email verification for Kyozo.
+
+Kyozo - Community Management Platform
+Privacy Policy | Terms of Service | Contact Support

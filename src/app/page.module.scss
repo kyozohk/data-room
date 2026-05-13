@@ -1,0 +1,31 @@
+@use '../styles/themes/theme-variables' as *;
+
+.section {
+  // padding: 2rem 0;
+  width: 100%;  
+  // Add some spacing between sections
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+}
+
+// Media queries for responsive design
+@media (max-width: 768px) {
+  .section {
+    // padding: 1.5rem 0;
+    
+    &:not(:last-child) {
+      // margin-bottom: 3rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    // padding: 1rem 0;
+    
+    &:not(:last-child) {
+      // margin-bottom: 2rem;
+    }
+  }
+}

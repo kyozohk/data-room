@@ -1,0 +1,230 @@
+@use '../../styles/themes/_theme-variables' as *;
+@use 'sass:map';
+
+.cardContainer {
+  width: calc(100% - 4rem); /* Account for 5rem left and 5rem right margins */
+  height: calc(100vh - 8rem); /* Account for top and bottom margins */
+  margin-top: 10rem;
+  margin-left: 2rem;
+  margin-bottom: 6rem;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Top align all content */  // gap: 30px;
+  position: relative;
+  overflow: hidden;
+  z-index: 3; /* Ensure it's above background images */
+  isolation: isolate; /* Create a new stacking context */
+  
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  background-color: var(--card-bg);
+  border: 0.5px solid var(--text-secondary);
+  box-shadow: var(--card-shadow);
+}   
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-end; /* Bottom align items horizontally */
+  justify-content: space-between;
+  margin-top: auto; /* Push content to bottom of container */
+  
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.leftContent {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0 0 0 160px; /* Moved 10px to the right (from 150px to 160px) */
+  margin-bottom: 30px;
+  justify-content: flex-end; /* Bottom align content */
+  height: 100%; /* Take full height of parent */
+}
+
+.rightContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+.cardTitle {
+  font-size: 4.8rem;
+  font-weight: 700;
+  margin: 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1.0; /* Reduced line height to bring lines closer together */
+  color: var(--heading-color);
+}
+
+.cardDescription {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  // padding-right: 80px
+  // width: 65%;
+  color: var(--text-color);
+}
+
+.phoneContainer {
+  position: relative;
+  width: 420px; /* Increased by 20% from 350px */
+  height: 640px; /* Reduced by 20px from bottom */
+  z-index: 2;
+  margin-bottom: -30px; /* Adjusted for vertical clipping */
+  margin-left: -100px; /* Move phone closer to text */
+  overflow: hidden; /* Hide the overflow to show only half */
+  display: flex;
+  justify-content: flex-start; /* Align content to the left */
+}
+
+.phoneImage {
+  object-fit: cover;
+  object-position: left top;
+  width: 378px; /* Reduced by 10% from 420px */
+  height: 594px; /* Reduced by 10% from 660px */
+  margin-bottom: -30px; /* Push bottom half outside the container */
+  z-index: 1;
+}
+
+.backgroundGradient {
+  position: absolute;
+  top: 50%;
+  right: -5%;
+  width: 1000px;
+  height: 1000px;
+  transform: translateY(-50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.phoneBackgroundGradient {
+  width: 1000px;
+  height: 1000px;
+  border-radius: 50%;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+
+  
+  // First animated expanding ring
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: transparent;
+    background-image: 
+      conic-gradient(
+        from 0deg,
+        #7b3b78,
+        #2b4b8f,
+        #e78b76,
+        #7b3b78
+      );
+    -webkit-mask: 
+      radial-gradient(circle at center, 
+        transparent 10%, 
+        transparent 26%, 
+        rgba(0, 0, 0, 0.0525) 27%,
+        rgba(0, 0, 0, 0.21) 28%,
+        rgba(0, 0, 0, 0.3675) 29%, 
+        rgba(0, 0, 0, 0.3675) 31%,
+        rgba(0, 0, 0, 0.21) 32%,
+        rgba(0, 0, 0, 0.0525) 33%,
+        transparent 34%
+      );
+    mask: 
+      radial-gradient(circle at center, 
+        transparent 0%, 
+        transparent 26%, 
+        rgba(0, 0, 0, 0.0525) 27%,
+        rgba(0, 0, 0, 0.21) 28%,
+        rgba(0, 0, 0, 0.3675) 29%, 
+        rgba(0, 0, 0, 0.3675) 31%,
+        rgba(0, 0, 0, 0.21) 32%,
+        rgba(0, 0, 0, 0.0525) 33%,
+        transparent 34%
+      );
+    filter: blur(1px);
+    animation: expandRing 2s infinite;
+  }
+  
+  // Second animated expanding ring with delay
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: transparent;
+    background-image: 
+      conic-gradient(
+        from 0deg,
+        #7b3b78,
+        #2b4b8f,
+        #e78b76,
+        #7b3b78
+      );
+    -webkit-mask: 
+      radial-gradient(circle at center, 
+        transparent 10%, 
+        transparent 26%, 
+        rgba(0, 0, 0, 0.0525) 27%,
+        rgba(0, 0, 0, 0.21) 28%,
+        rgba(0, 0, 0, 0.3675) 29%, 
+        rgba(0, 0, 0, 0.3675) 31%,
+        rgba(0, 0, 0, 0.21) 32%,
+        rgba(0, 0, 0, 0.0525) 33%,
+        transparent 34%
+      );
+    mask: 
+      radial-gradient(circle at center, 
+        transparent 0%, 
+        transparent 26%, 
+        rgba(0, 0, 0, 0.0525) 27%,
+        rgba(0, 0, 0, 0.21) 28%,
+        rgba(0, 0, 0, 0.3675) 29%, 
+        rgba(0, 0, 0, 0.3675) 31%,
+        rgba(0, 0, 0, 0.21) 32%,
+        rgba(0, 0, 0, 0.0525) 33%,
+        transparent 34%
+      );
+    filter: blur(1px);
+    animation: expandRing 2s infinite 1.4s; /* 1.4s delay to start when first circle is at 70% */
+  }
+}
+
+@keyframes expandRing {
+  0% {
+    width: 50%;
+    height: 50%;
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+  }
+}

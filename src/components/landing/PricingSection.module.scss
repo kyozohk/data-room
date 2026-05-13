@@ -1,0 +1,97 @@
+@use '../../styles/themes/_theme-variables' as *;
+
+.pricingSection {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: var(--text-color);
+  margin-top: 8rem;
+  
+  .background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    max-width: 100rem; // Increased from 90rem
+    margin: 0 auto;
+    // padding: 6rem 1rem; // py-24 px-4
+    // justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    
+    // Target the Button component directly
+    > a {
+      margin-top: 4rem; // Move button 4rem lower
+    }
+
+    @media (min-width: 640px) {
+      padding: 6rem 1.5rem; // sm:px-6
+    }
+
+    @media (min-width: 1024px) {
+      padding: 6rem 2rem; // lg:px-8
+    }
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 4rem; // mb-16
+
+    h2 {
+      font-size: 2.25rem; // text-4xl
+      font-weight: 700; // font-bold
+      color: var(--heading-color);
+      margin-bottom: 1rem; // mb-4
+
+      @media (min-width: 768px) {
+        font-size: 3rem; // md:text-5xl
+      }
+    }
+
+    p {
+      font-size: 1.25rem; // text-xl
+      color: var(--text-secondary);
+      max-width: 42rem; // max-w-2xl
+      margin: 0 auto;
+    }
+  }
+
+  .pricingGrid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem; // Reduced from 1rem
+    width: 80%;
+    max-width: 80rem;
+    margin: 0 auto;
+
+    .pricingCardWrapper {
+      display: flex;
+      justify-content: center;
+      flex: 1;
+      max-width: 35rem;
+    }
+  }
+
+  .pricingCardWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+      
+    @media (min-width: 768px) {
+      width: auto;
+    }
+  }
+}

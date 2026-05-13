@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kyozo API Demo</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #8a49e4;
+      border-bottom: 2px solid #34a89c;
+      padding-bottom: 10px;
+    }
+    pre {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    button {
+      background: linear-gradient(to right, #8a49e4, #34a89c);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin: 10px 0;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    .hidden {
+      display: none;
+    }
+    #output {
+      margin-top: 20px;
+    }
+    .section {
+      margin-bottom: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .code-block {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Kyozo API Demo</h1>
+  
+  <div class="section">
+    <h2>Step 1: Configure Firebase</h2>
+    <div id="firebaseConfig" class="code-block">
+      <p>Enter your Firebase configuration:</p>
+      <textarea id="configInput" rows="10" style="width: 100%;" placeholder="Paste your Firebase config here"></textarea>
+      <button id="saveConfig">Save Configuration</button>
+    </div>
+  </div>
+  
+  <div id="authSection" class="section hidden">
+    <h2>Step 2: Authenticate</h2>
+    <div>
+      <input type="email" id="email" placeholder="Email" value="will@kyozo.com">
+      <input type="password" id="password" placeholder="Password">
+      <button id="login">Login</button>
+    </div>
+    <div id="authStatus"></div>
+  </div>
+  
+  <div id="apiSection" class="section hidden">
+    <h2>Step 3: Test API Endpoints</h2>
+    <button id="getAllCommunities">Get All Communities</button>
+    <button id="getUserCommunities">Get User Communities</button>
+    <div id="output"></div>
+  </div>
+
+  <script>
+    // Initialize variables
+    let firebaseApp;
+    let auth;
+    let idToken;
+
+    // DOM elements
+    const saveConfigBtn = document.getElementById('saveConfig');
+    const configInput = document.getElementById('configInput');
+    const authSection = document.getElementById('authSection');
+    const apiSection = document.getElementById('apiSection');
+    const loginBtn = document.getElementById('login');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+    const authStatus = document.getElementById('authStatus');
+    const getAllCommunitiesBtn = document.getElementById('getAllCommunities');
+    const getUserCommunitiesBtn = document.getElementById('getUserCommunities');
+    const output = document.getElementById('output');
+
+    // Try to load config from localStorage
+    const savedConfig = localStorage.getItem('firebaseConfig');
+    if (savedConfig) {
+      configInput.value = savedConfig;
+      initializeFirebase(JSON.parse(savedConfig));
+    }
+
+    // Save Firebase configuration
+    saveConfigBtn.addEventListener('click', () => {
+      try {
+        const config = JSON.parse(configInput.value);
+        localStorage.setItem('firebaseConfig', configInput.value);
+        initializeFirebase(config);
+      } catch (error) {
+        alert('Invalid configuration: ' + error.message);
+      }
+    });
+
+    // Initialize Firebase
+    function initializeFirebase(config) {
+      try {
+        firebaseApp = firebase.initializeApp(config);
+        auth = firebaseApp.auth();
+        authSection.classList.remove('hidden');
+        
+        // Check if user is already logged in
+        auth.onAuthStateChanged(user => {
+          if (user) {
+            handleAuthSuccess(user);
+          }
+        });
+      } catch (error) {
+        alert('Error initializing Firebase: ' + error.message);
+      }
+    }
+
+    // Login with email and password
+    loginBtn.addEventListener('click', async () => {
+      const email = emailInput.value;
+      const password = passwordInput.value;
+      
+      try {
+        const userCredential = await auth.signInWithEmailAndPassword(email, password);
+        handleAuthSuccess(userCredential.user);
+      } catch (error) {
+        authStatus.innerHTML = `<p style="color: red;">Authentication failed: ${error.message}</p>`;
+      }
+    });
+
+    // Handle successful authentication
+    async function handleAuthSuccess(user) {
+      idToken = await user.getIdToken();
+      authStatus.innerHTML = `<p style="color: green;">Authenticated as: ${user.email} (${user.uid})</p>`;
+      apiSection.classList.remove('hidden');
+    }
+
+    // Get all communities
+    getAllCommunitiesBtn.addEventListener('click', async () => {
+      if (!idToken) {
+        output.innerHTML = '<p style="color: red;">Please login first</p>';
+        return;
+      }
+      
+      try {
+        const response = await fetch('/api/communities', {
+          headers: {
+            'Authorization': `Bearer ${idToken}`
+          }
+        });
+        
+        const data = await response.json();
+        output.innerHTML = `<h3>All Communities</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (error) {
+        output.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+      }
+    });
+
+    // Get user communities
+    getUserCommunitiesBtn.addEventListener('click', async () => {
+      if (!idToken) {
+        output.innerHTML = '<p style="color: red;">Please login first</p>';
+        return;
+      }
+      
+      try {
+        const response = await fetch('/api/user/communities', {
+          headers: {
+            'Authorization': `Bearer ${idToken}`
+          }
+        });
+        
+        const data = await response.json();
+        output.innerHTML = `<h3>User Communities</h3><pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (error) {
+        output.innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+      }
+    });
+  </script>
+</body>
+</html>

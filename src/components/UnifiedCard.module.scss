@@ -1,0 +1,257 @@
+@use '../styles/themes/_theme-variables' as *;
+
+.cardContainer {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+  isolation: isolate;
+
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  background-color: var(--card-bg);
+  // background-color: red;
+  border: 0.5px solid var(--text-secondary);
+  box-shadow: var(--card-shadow);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  
+  // New styling for CreativeCard-like appearance
+  &.newStyling {
+    border-radius: 1.5rem;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    padding: 3rem 4rem;
+    min-height: 400px;
+    
+    .cardContent {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+    }
+    
+    .leftContent {
+      flex: 1;
+      max-width: 50%;
+    }
+    
+    .rightContent {
+      flex: 1;
+      max-width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+      padding: 2rem;
+      
+      .cardContent {
+        flex-direction: column;
+      }
+      
+      .leftContent,
+      .rightContent {
+        max-width: 100%;
+      }
+    }
+  }
+  
+  // Variant-specific styles
+  &.sliding {
+    width: calc(100% - 4rem);
+    height: calc(100vh - 8rem);
+    margin-left: 2rem;
+    
+    .cardContent {
+      gap: 40px;
+      align-items: flex-end;
+      margin-top: auto;
+      padding-top: 40px;
+    }
+    
+    .leftContent {
+      width: 50%;
+      padding: 30px 30px 30px 40px;
+      padding-top: 40px;
+    }
+    
+    .rightContent {
+      margin-left: -4rem;
+      width: 50%;
+      align-items: flex-start;
+    }
+    
+    .cardDescription, .cardText {
+      width: 65%;
+    }
+  }
+  
+  &.dialog {
+    .cardContent {
+      gap: 0;
+      align-items: stretch;
+      justify-content: space-between;
+      padding: 0;
+    }
+    
+    .leftContent {
+      width: 40%; /* Reduced from 50% to make right side 20% wider */
+      padding: 40px;
+      align-items: flex-start;
+      
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    
+    .rightContent {
+      flex: 1;
+      align-items: stretch;
+      padding: 0;
+      
+      > * {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.leftContent {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+  justify-content: flex-start;
+  height: 100%;
+  position: relative;
+  
+  @media (max-width: 768px) {
+    width: 100% !important;
+    padding: 20px !important;
+  }
+}
+
+.rightContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: visible;
+  height: 100%;
+}
+
+.stepIndicator {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.categoryLabel {
+  font-size: 0.9rem;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.cardTitle {
+  font-weight: 700;
+  margin: 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: var(--heading-color);
+}
+
+// Variant-specific title sizes
+.sliding .cardTitle {
+  font-size: 4.4rem;
+  line-height: 1.0;
+  
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+  }
+}
+
+.dialog .cardTitle {
+  font-size: 2rem;
+}
+
+.cardDescription {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: var(--text-color);
+  font-weight: normal;
+  font-family: var(--font-family);
+  letter-spacing: normal;
+  
+  @media (max-width: 768px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.cardText {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  color: var(--text-color);
+  
+  @media (max-width: 768px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}
+
+.buttonContainer {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}

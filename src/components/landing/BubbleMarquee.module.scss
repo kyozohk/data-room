@@ -1,0 +1,106 @@
+@use '../../styles/themes/_theme-variables' as *;
+
+.bubbleMarqueeContainer {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding-top: 8rem;
+}
+
+.bubbleRowContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 10rem; /* Reduced by 10% from 11.2rem */
+  margin: 0;
+  padding: 0;
+}
+
+.bubbleRow {
+  display: flex;
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  width: max-content;
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3.1rem 8rem; /* Reduced padding for tighter bubbles */
+  border-radius: 6rem;
+  font-weight: 400;
+  font-size: 3rem;
+  background-color: transparent;
+  border: 1.5px solid; /* Border color will be set inline via style prop */
+  transition: all 0.3s ease;
+  cursor: default;
+  margin-right: -1px; /* Negative margin to make bubbles overlap slightly */
+  margin-top: 0;
+  margin-bottom: 0;
+  color: var(--text-color); /* Using theme text color */
+  
+  /* Check icon color */
+  svg {
+    color: inherit;
+  }
+  
+  &:hover {
+    background-color: var(--hover-bg, currentColor);
+    color: var(--background-color);
+    transform: translateY(-2px);
+  }
+}
+
+.toLeft {
+  animation: scroll-left var(--scroll-duration, 10s) linear infinite;
+}
+
+.toRight {
+  animation: scroll-right var(--scroll-duration, 5s) linear infinite;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// Media queries for responsive design
+@media (max-width: 768px) {
+  .bubbleRowContainer {
+    line-height: 0 !important;
+    height: 6.3rem; /* Reduced by 10% from 7rem */
+  }
+  
+  .bubble {
+    padding: 2rem 3.5rem;
+    font-size: 1.5rem;
+    margin-right: 0; /* Removed margin to make bubbles touch */
+  }
+}
+
+@media (max-width: 480px) {
+  .bubbleRowContainer {
+    height: 4.5rem; /* Reduced by 10% from 5rem */
+  }
+  
+  .bubble {
+    padding: 1.5rem 2.5rem;
+    font-size: 1.2rem;
+    margin-right: 0; /* Removed margin to make bubbles touch */
+  }
+}

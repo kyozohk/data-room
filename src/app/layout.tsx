@@ -1,24 +1,41 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import '../styles/globals.css';
-import 'highlight.js/styles/github.css';
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "../styles/globals.scss";
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
+import { ThemeProvider } from "../context/ThemeContext";
+import FixedFooter from "../components/landing/FixedFooter";
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-  title: process.env.DATAROOM_NAME || 'Kyozo Dataroom',
-  description: 'Confidential — Kyozo company dataroom',
-  robots: { index: false, follow: false },
+  title: "Kyozo · Discover Your Creative Universe",
+  description: "Kyozo is an ecosystem of creative communities — exclusive access, insider insights, and tools to grow your audience.",
+  icons: {
+    icon: '/favicon.png',
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+    <html lang="en" data-theme="dark">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ThemeProvider>
+          {children}
+          <FixedFooter />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

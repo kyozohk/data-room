@@ -1,0 +1,122 @@
+@use '../../styles/themes/_theme-variables' as *;
+
+.cardContainer {
+  width: calc(100% - 4rem); /* Account for 5rem left and 5rem right margins */
+  height: calc(100vh - 8rem); /* Account for top and bottom margins */
+  margin-left: 2rem;
+  // margin-bottom: -12rem;
+  // margin-top: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+  isolation: isolate;
+
+  border-radius: 30px;
+  backdrop-filter: blur(10px);
+  background-color: var(--card-bg);
+  border: 0.5px solid var(--text-secondary);
+  // box-shadow: var(--card-shadow);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    z-index: -1;
+  }
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: auto;
+  height: 100%;
+  padding-top: 40px; /* Add padding to the top of card content */
+  
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
+}
+
+.leftContent {
+  // width: 500px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 10px;
+  padding: 30px 30px 30px 30px;
+  padding-top: 40px; /* Increased top padding */
+  padding-left: 40px; /* Increased left padding */
+  justify-content: flex-start;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+.rightContent {
+  // background-color: red ;
+  margin-left: -8rem;
+  flex: 1;
+  display: flex;
+  width: 55%;
+  justify-content: center;
+  align-items: flex-start; /* Align items to the top */
+  position: relative;
+  overflow: visible;
+  // padding-top: 40px; /* Match the top padding of left content */
+  /* Removed top: -8rem to fix alignment */
+  height: 100%;
+}
+
+.categoryLabel {
+  font-size: 0.9rem;
+  font-weight: 200;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 40px; /* Add top margin to create space */
+  margin-bottom: 20px;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.cardTitle {
+  font-size: 4.4rem;
+  font-weight: 700;
+  margin: 0;
+  -webkit-background-clip: text;
+  background-clip: text;
+  line-height: 1.0;
+  color: var(--heading-color);
+  
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+  }
+}
+
+.cardDescription {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin: 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 65%;
+  color: var(--text-color);
+  
+  @media (max-width: 768px) {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+}

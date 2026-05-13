@@ -1,0 +1,47 @@
+@use '_theme-variables' as *;
+
+// Dashboard Layout Utility Classes
+.dashboardContainer {
+  padding: var(--dashboard-container-padding);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Mixin for consistent dashboard page styling
+@mixin dashboard-page-container {
+  padding: var(--dashboard-container-padding);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+// Mixin for dashboard content sections
+@mixin dashboard-content-section {
+  margin-bottom: 2rem;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Mixin for dashboard cards
+@mixin dashboard-card-base {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: var(--card-shadow);
+  transition: all 0.3s ease;
+}
+
+// Export utility classes
+.dashboardPageContainer {
+  @include dashboard-page-container;
+}
+
+.dashboardContentSection {
+  @include dashboard-content-section;
+}
+
+.dashboardCardBase {
+  @include dashboard-card-base;
+}

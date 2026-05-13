@@ -1,0 +1,46 @@
+// This file creates a SASS map from CSS variables to maintain compatibility
+// with components that were using the $colors-primary map
+
+@use 'sass:map';
+
+$colors-primary: (
+  'accent-pink': var(--accent-pink),
+  'accent-pink-rgb': var(--accent-pink-rgb),
+  'accent-purple': var(--accent-purple),
+  'accent-blue': var(--accent-blue),
+  'accent-blue-rgb': var(--accent-blue-rgb),
+  'background-color': var(--background-color),
+  'text-color': var(--text-color),
+  'dark-text-color': var(--text-color),
+  'heading-color': var(--heading-color),
+  'card-bg': var(--card-bg),
+  'card-shadow': var(--card-shadow),
+  'button-bg': var(--button-bg),
+  'button-text': var(--button-text),
+  'button-bg-hover': var(--button-bg-hover),
+  'link-color': var(--link-color),
+  'link-hover-color': var(--link-hover-color),
+  'error': var(--error-color),
+  'error-rgb': var(--error-color-rgb),
+  'border-color': var(--border-color),
+  'input-bg': var(--input-bg),
+  'text-secondary': var(--text-secondary),
+  'white': #ffffff,
+  'purple': var(--accent-purple),
+  'pink': var(--accent-pink)
+);
+
+$colors-standard: (
+  'text-secondary': var(--text-secondary)
+);
+
+$colors-ui: (
+  'border': var(--border-color),
+  'card-bg': var(--card-bg),
+  'bg': var(--background-color)
+);
+
+$colors-common: (
+  'white': #ffffff,
+  'black': #000000
+);

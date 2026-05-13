@@ -1,0 +1,42 @@
+@use '../../styles/themes/_theme-variables' as *;
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.animatedConcentricRings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 4px solid var(--text-color); // Double thickness (2px -> 4px) using text color
+  background: transparent;
+  pointer-events: none;
+  
+  &:nth-child(odd) {
+    border-color: var(--text-color); // Use text color
+    border-width: 4px; // Double thickness
+  }
+  
+  &:nth-child(even) {
+    border-color: var(--text-color); // Use text color
+    border-width: 4px; // Double thickness
+  }
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+}

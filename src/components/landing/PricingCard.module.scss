@@ -1,0 +1,122 @@
+@use '../../styles/themes/_theme-variables' as *;
+
+// Gradient border wrapper
+.gradientBorder {
+  position: relative;
+  width: 84%; // 70% increased by 20%
+  max-width: 38.4rem; // 32rem increased by 20%
+  border-radius: 1.5rem; // rounded-3xl
+  padding: 1px; // Thin border as requested
+  background: linear-gradient(135deg, var(--from-color) 0%, var(--from-color) 30%, rgba(102, 102, 102, 0.8) 70%, rgba(102, 102, 102, 0.8) 100%);
+}
+
+.card {
+  position: relative;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 1.4375rem; // rounded-[23px]
+  padding: 2rem; // p-8
+  overflow: hidden;
+  // height: 100%;
+  height: 408px; // 340px increased by 20%
+  
+  @media (min-width: 768px) {
+    padding: 2.5rem; // md:p-10
+  }
+}
+
+// Decorative background pattern
+.backgroundPattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.patternSvg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.03;
+  color: var(--text-secondary);
+}
+
+// Card content
+.cardContent {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  // gap: 1.5rem;
+}
+
+
+.title {
+  font-size: 3.6rem; // 3rem increased by 20%
+  font-weight: 500; // font-medium
+  letter-spacing: -0.025em; // tracking-tight
+  color: var(--heading-color);
+  margin: 0;
+}
+
+.divider {
+  margin: 1rem 0; // my-6
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--text-secondary), transparent);
+}
+
+.subtitle {
+  color: var(--from-color);
+  font-weight: 500; // font-medium
+  font-size: 0.9rem; // 0.75rem increased by 20%
+}
+
+.price {
+  margin-top: 0.5rem; // mt-2
+  font-size: 1.8rem; // 1.5rem increased by 20%
+  color: var(--heading-color);
+  
+  span {
+    font-weight: 200; // font-light
+  }
+}
+
+.featuresList {
+  // background-color: red;
+  margin-top: -0.5rem; // mt-8
+  font-size: 0.96rem; // 0.8rem increased by 20%
+  font-weight: 200;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; // 0.5rem increased by 20%
+  list-style: none;
+  padding: 0;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &.hidden {
+    opacity: 0;
+    transform: translateY(1rem); // translate-y-4
+  }
+  
+  span {
+    margin-left: 0.9rem; // 0.75rem increased by 20%
+    color: var(--text-secondary);
+  }
+}
+
+.checkIcon {
+  width: 1.2rem; // 1rem increased by 20%
+  height: 1.2rem; // 1rem increased by 20%
+  flex-shrink: 0;
+  color: var(--text-color);
+}

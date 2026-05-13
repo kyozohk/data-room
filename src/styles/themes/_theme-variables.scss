@@ -1,0 +1,52 @@
+// Theme variables
+
+// Light theme mixin
+@mixin light-theme {
+  --background-image: url('/light-texture-bg.png');
+  --background-color: #fff;
+  --text-color: #333;
+  --heading-color: #222;
+  // --card-bg: rgba(255, 255, 255, 1);
+  --card-bg: #eeeeee;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --button-bg: #333;
+  --button-text: #fff;
+  --button-bg-hover: #555;
+  --link-color: #0070f3;
+  --link-hover-color: #0051a8;
+  --accent-pink: #e94e8a;
+  --accent-pink-rgb: 233, 78, 138;
+  --accent-purple: #8a4ee9;
+  --accent-blue: #4e8ae9;
+  --accent-blue-rgb: 78, 138, 233;
+  --error-color: #e94e4e;
+  --error-color-rgb: 233, 78, 78;
+  --border-color: #e0e0e0;
+  --input-bg: #f9f9f9;
+  --text-secondary: #666;
+}
+
+// Dark theme mixin
+@mixin dark-theme {
+  --background-image: url('/dark-texture-bg.png');
+  --background-color: #000;
+  --text-color: #e0e0e0;
+  --heading-color: #f0f0f0;
+  --card-bg: #181818;
+  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --button-bg: #f0f0f0;
+  --button-text: #222;
+  --button-bg-hover: #ccc;
+  --link-color: #3694ff;
+  --link-hover-color: #5cacff;
+  --accent-pink: #ff6ea9;
+  --accent-pink-rgb: 255, 110, 169;
+  --accent-purple: #a76eff;
+  --accent-blue: #6ea7ff;
+  --accent-blue-rgb: 110, 167, 255;
+  --error-color: #ff6e6e;
+  --error-color-rgb: 255, 110, 110;
+  --border-color: #333;
+  --input-bg: #111;
+  --text-secondary: #999;
+}

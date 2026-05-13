@@ -1,0 +1,17 @@
+we need to check it carefully following flow and make sure we console log each step properly so we can troubleshoot this issue because onboarding wizard is still not working and we have been trying to fix it for long time, its a rather simple below process, rewrite the whole flow, i have renamed onboarding route to onboarding-backup
+
+1. When usere is not logged in, fixedfooter button caption is Sign In and if user is logged in, its Sign Out
+2. Clicking on Sign In, check the firestore database if user started onboarding and what was the last step completed
+3. if user did start the onboarding, resume from the step after user left off
+4. If user starts from scratch, follow below process
+4.1 User can signup with email or by google
+4.2 if signup with googe successful, create the users collection in firestore (if first ever user) and inside the users create new document and in this document save users details like email, name from google auth and mark onboarding step = 1
+4.3 once above firestore opoeration complete, automatically move user to Avatar screen where pre fill the users name from google auth, show the avatar from google auth while user can still chose other available avatar
+4.4 when user clicks next or skip, save the current details in the users document and set onboarding step = 2
+4.5 Now is the community setup page where user would set the community name, bio, cover image etc, when user click next or skip, save the image in fire storage, if its user first community then create the Communities collection inside the user document, in this collection create new document and here save the community details and set the onboarding step =3, we need to probably keep a context or something to remember which community is user operating on right now
+4.6 in this next step, user can import membrs data from CSV file, when user browse for the file, we load all of this data in an editable grid and show on this page ittself, user can edit those values and when user clicks on skip or next, we save this data in the community user just created and set the onboarding step = 4
+4.7 this is the last step where we show user summary of what she has done, load the current user document from firestore and show the details in middle vertically scrollable section where on top show the user avatar image on left, name, bio and email on the right, below thata users community name, bio, below that the members imported and mark onboardin step = 5 and when user click on launch button, navigate user to dashboard route where all the communities 
+4.7 next time user logs in or signs up , check if onboarding step is record not created then go back to 4.1
+4.8 next time user logs in and if onboarding step is less than 5 then launch the fixedfooter dialog with the next step from saved value
+4.9 if onboarding step saved is 5 already then take user directly to dashboard route
+

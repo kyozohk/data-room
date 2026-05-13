@@ -1,0 +1,100 @@
+// Variables
+$row-count: 12;
+$bubble-gap-rem: 1.5rem; // Gap between bricks
+$brick-width-rem: 19rem; // Width of video bricks
+$brick-height-rem: 8rem; // Height of video bricks
+$row-height-rem: 7.5rem; // Height of each row
+
+// Mixin for the brick's dimensions and styling
+@mixin brick-base {
+  width: $brick-width-rem;
+  height: $brick-height-rem;
+  border-radius: 9999px; // full rounded corners
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+}
+
+// Mixin for the video within the brick
+@mixin brick-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+// Animation
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+// Main container for the video wall
+.videoWallContainer {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 400px; // Ensure minimum height for proper display
+  max-height: 600px; // Constrain height to fit within card
+}
+
+// Viewport for the scrolling rows
+.scrollViewport {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+// Container for all rows to animate
+.scrollWrapper {
+  width: 100%;
+  animation: scroll-up calc(#{$row-count} * 3.5s) linear infinite;
+}
+
+// Individual row container
+.row {
+  position: relative;
+  width: 100%;
+  max-width: 54rem;
+  margin-bottom: 3rem;
+  margin-right: 1.5rem; // Align to 1.5rem from right edge
+  margin-left: 0; // Allow left side to show fully
+  height: $row-height-rem;
+}
+
+// Base styles for a single brick
+.brick {
+  @include brick-base;
+
+  // Video inside the brick
+  video {
+    @include brick-video;
+  }
+}
+
+// Positions for bricks in layout A (even rows) - aligned from left
+.layoutA {
+  > div:first-child .brick {
+    position: absolute;
+    left: 0;
+  }
+  > div:last-child .brick {
+    position: absolute;
+    left: calc(#{$brick-width-rem} + #{$bubble-gap-rem});
+  }
+}
+
+// Positions for bricks in layout B (odd rows - offset) - aligned from left with offset
+.layoutB {
+  > div:first-child .brick {
+    position: absolute;
+    left: calc(#{$brick-width-rem}/2);
+  }
+  > div:last-child .brick {
+    position: absolute;
+    left: calc(#{$brick-width-rem}/2 + #{$brick-width-rem} + #{$bubble-gap-rem});
+  }
+}

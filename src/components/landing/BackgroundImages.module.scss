@@ -1,0 +1,192 @@
+.backgroundContainer {
+  position: relative;
+  width: 100%;
+  height: 0; /* No height to avoid creating space */
+  overflow: visible; /* Allow content to overflow */
+  z-index: 1;
+  margin-top: -15vh; /* Pull up to overlap with hero section */
+}
+
+.leftImage, .rightImage {
+  position: absolute;
+  height: 80vh; /* Taller to span across sections */
+  opacity: 0; /* Start invisible for animation */
+  z-index: -1; /* Ensure they stay behind content */
+}
+
+.leftImage {
+  width: 15%; /* Half the size of the right image */
+  left: 0; /* Flush with left edge */
+  top: -28vh; /* Position partly in hero section */
+}
+
+.rightImage {
+  width: 18%; /* Keep current size */
+  right: 0;
+  top: -26vh; /* Position partly in hero section */
+}
+
+/* Animation for left image */
+.animateLeft {
+  animation: slideInLeft 1.2s ease-out forwards;
+}
+
+/* Animation for right image */
+.animateRight {
+  animation: slideInRight 1.2s ease-out forwards;
+}
+
+.bottomRight {
+  position: absolute;
+  top: -52vh;
+  left: 5rem;
+  width: 1200px;
+  height: 1200px;
+  background: radial-gradient(circle, #a855f7, transparent 60%); // Purple color
+  transform: translate(33.33%, 33.33%);
+  pointer-events: none;
+}
+
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.middleTriangle {
+  position: absolute;
+  right: -5rem;
+  top: 175vh; /* 200vh down as requested */
+  z-index: -1;
+}
+
+.middleCircle {
+  position: absolute;
+  right: -1rem;
+  top: 550vh; /* 200vh down as requested */
+  z-index: -1;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Toolkit Background Elements */
+
+/* Define the color variables for the circles */
+$center-gradient-start: #C0DFF0;
+$center-gradient-end: #B6A3D7;
+$ring-one-color: #81C9BD;
+$ring-two-color: #9D6469;
+$ring-three-color: #C098E5;
+$ring-four-color: #B59962;
+
+/* Toolkit Background SVG - positioned like other background images */
+// .toolkitBackgroundSvg {
+//   position: absolute;
+//   top: 450vh; // Moved up significantly to appear earlier in the page
+//   right: -25rem; // Adjusted left position to be more visible
+//   width: 200px;
+//   height: 200px;
+//   background-image: url('/middle-right.png');
+//   background-repeat: no-repeat;
+//   background-size: contain;
+//   pointer-events: none;
+//   z-index: -5; // Behind other content
+// }
+
+/* Toolkit Circle Component - positioned like other background images */
+.toolkitCircleComponent {
+  position: absolute;
+  width: 900px;
+  height: 900px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 471vh; // Moved up significantly to appear earlier in the page
+  left: -26rem; // Adjusted left position to be more visible
+  z-index: -15; // Pushed further back to ensure it doesn't interfere with other content
+  pointer-events: none;
+  
+  /* Center circle with a radial gradient */
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, $center-gradient-start 0%, $center-gradient-end 100%);
+    z-index: 5;
+  }
+}
+
+/* Ring 1 (closest to center) */
+.circleComponentRing1 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 28px solid $ring-four-color;
+  z-index: 4;
+}
+
+/* Ring 2 */
+.circleComponentRing2 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 28px solid $ring-three-color;
+  z-index: 3;
+}
+
+/* Ring 3 */
+.circleComponentRing3 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  border: 28px solid $ring-two-color;
+  z-index: 2;
+}
+
+/* Ring 4 (outermost) */
+.circleComponentRing4 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  border: 28px solid $ring-one-color;
+  z-index: 1;
+}
+
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .leftImage, .rightImage {
+    width: 60%;
+  }
+}
+
+@media (max-width: 480px) {
+  .backgroundContainer {
+    height: 30vh;
+  }
+  
+  .leftImage, .rightImage {
+    width: 80%;
+  }
+}

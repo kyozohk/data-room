@@ -1,0 +1,82 @@
+@use '../../styles/themes/_theme-variables' as *;
+
+.parallax-gallery {
+  position: absolute; /* Position absolutely to fill the entire parent */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.parallax-gallery__background {
+  height: 100%;
+  background: var(--card-bg); // Use theme variable
+  color: var(--text-color);
+}
+
+.parallax-gallery__viewport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax-gallery__relative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%; // Take full height of parent
+}
+
+.parallax-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); // Default centered position
+  transition: transform 150ms ease-out;
+  z-index: 1;
+  
+  // Different z-index for layering effect
+  &:nth-child(1) { z-index: 5; }
+  &:nth-child(2) { z-index: 4; }
+  &:nth-child(3) { z-index: 3; }
+  &:nth-child(4) { z-index: 2; }
+  &:nth-child(5) { z-index: 1; }
+}
+
+.parallax-image__container {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--card-bg); // Use theme variable
+  box-shadow: var(--card-shadow);
+  
+  @media (min-width: 768px) {
+    border-radius: 1.25rem;
+  }
+}
+
+.parallax-image__img {
+  height: 30vh;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  filter: brightness(1.1) contrast(1.1); // Enhance image appearance
+  
+  @media (min-width: 768px) {
+    height: 35vh;
+  }
+  
+  @media (min-width: 1200px) {
+    height: 40vh;
+  }
+}
