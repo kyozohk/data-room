@@ -1,0 +1,169 @@
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  border-right: 1px solid var(--border-color);
+  background: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 0.85rem 1.25rem 0.85rem;
+  z-index: 30;
+  overflow-y: auto;
+}
+@media (max-width: 900px) {
+  .sidebar {
+    position: relative; width: 100%; height: auto;
+    border-right: 0; border-bottom: 1px solid var(--border-color);
+  }
+}
+
+.brand {
+  display: flex; align-items: center; gap: 0.75rem;
+  padding: 0.4rem 0.6rem 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.logo { display: flex; align-items: center; }
+.brandTitle {
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: var(--text-color);
+}
+.brandSub {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-top: 0.1rem;
+}
+
+.searchWrap {
+  position: relative;
+  margin: 1rem 0.4rem;
+}
+.searchIcon {
+  position: absolute; left: 0.7rem; top: 50%; transform: translateY(-50%);
+  color: var(--text-tertiary); font-size: 0.95rem; pointer-events: none;
+}
+.search {
+  width: 100%;
+  background: var(--input-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.7rem 0.5rem 2rem;
+  font-size: 0.85rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color var(--t-base), box-shadow var(--t-base);
+}
+.search:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(168, 139, 106, 0.15);
+}
+
+.navHomeItem {
+  display: flex; align-items: center; gap: 0.6rem;
+  margin: 0 0.2rem 0.5rem;
+  padding: 0.55rem 0.75rem;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: all var(--t-base);
+}
+.navHomeItem:hover { background: var(--muted-bg); color: var(--text-color); }
+.navHomeItem.active {
+  background: var(--accent);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.nav { display: flex; flex-direction: column; gap: 1rem; flex: 1; padding: 0.4rem 0; }
+
+.group { display: flex; flex-direction: column; gap: 0.25rem; }
+.groupHeader {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+.groupHeader > svg { color: var(--accent-gold); }
+.count {
+  margin-left: auto;
+  background: var(--muted-bg);
+  color: var(--text-secondary);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  letter-spacing: 0;
+  border: 1px solid var(--border-color);
+}
+
+.list { list-style: none; margin: 0; padding: 0; }
+.item {
+  display: flex; align-items: center; gap: 0.55rem;
+  padding: 0.45rem 0.7rem 0.45rem 0.85rem;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.35;
+  transition: background var(--t-fast), color var(--t-fast);
+  position: relative;
+}
+.item:hover {
+  background: var(--muted-bg);
+  color: var(--text-color);
+}
+.item.active {
+  background: var(--accent);
+  color: var(--text-color);
+  font-weight: 600;
+}
+.item.active .dot { background: var(--accent-gold); }
+.dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--text-tertiary);
+  flex-shrink: 0;
+  transition: background var(--t-fast);
+}
+.itemTitle {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.empty { padding: 0.4rem 0.85rem; color: var(--text-tertiary); font-size: 0.8rem; }
+
+.footer {
+  border-top: 1px solid var(--border-color);
+  padding: 0.85rem 0.3rem 0;
+  margin-top: 0.5rem;
+}
+.logout {
+  width: 100%;
+  display: flex; align-items: center; gap: 0.65rem;
+  padding: 0.55rem 0.75rem;
+  background: none;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+.logout:hover {
+  background: var(--muted-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+.legal {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+}

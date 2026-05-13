@@ -1,0 +1,69 @@
+/* Design tokens — mirrored from KyozoVerse light theme (warm sepia/cream) */
+:root {
+  /* Surfaces */
+  --background-color:   #FDFCFA;   /* page content bg — warm cream */
+  --page-bg:            #F9FAFB;   /* outer/app bg — cool off-white */
+  --card-bg:            #FDFCFA;
+  --card-bg-hover:      #F5F3F0;
+  --muted-bg:           #F5F3F0;   /* lighter beige */
+  --input-bg:           #FFFFFF;
+  --elevated-bg:        #FFFFFF;
+
+  /* Text */
+  --text-color:         #5E4B3B;   /* warm brown body */
+  --heading-color:      #88796E;   /* muted taupe headings */
+  --text-secondary:     #8D7059;   /* warm taupe */
+  --text-tertiary:      #A89380;   /* lighter taupe */
+
+  /* Borders */
+  --border-color:       #E7E7E6;   /* default rule */
+  --border-color-strong:#D4C5B4;   /* warmer beige border */
+  --border-soft:        #F0EBE2;
+
+  /* Brand / functional */
+  --primary:            #E5DFD1;   /* button bg / chip */
+  --primary-fg:         #5E4B3B;
+  --accent:             #D4C5B4;   /* hover, active rail */
+  --accent-fg:          #5E4B3B;
+
+  --accent-gold:        #A88B6A;   /* highlight — warm gold */
+  --accent-gold-soft:   rgba(168, 139, 106, 0.12);
+  --accent-rust:        #B8775A;   /* secondary highlight */
+  --accent-sage:        #8EA38C;   /* success-ish */
+
+  --link-color:         #6F5B47;
+  --link-hover-color:   #5E4B3B;
+
+  --error-color:        #C0392B;
+  --error-bg:           rgba(192, 57, 43, 0.08);
+  --success-color:      #6E8B6A;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-headline: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Layout */
+  --sidebar-width: 17rem;
+  --sidebar-width-mobile: 4rem;
+  --header-height: 4rem;
+  --content-max-width: 50rem;
+
+  /* Radius (matches KyozoVerse 0.5rem / shadcn scale) */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+
+  /* Elevation (soft shadows in keeping with light theme) */
+  --shadow-xs: 0 1px 2px rgba(94, 75, 59, 0.04);
+  --shadow-sm: 0 1px 3px rgba(94, 75, 59, 0.06), 0 1px 2px rgba(94, 75, 59, 0.04);
+  --shadow-md: 0 4px 12px rgba(94, 75, 59, 0.07), 0 2px 4px rgba(94, 75, 59, 0.04);
+  --shadow-lg: 0 12px 24px rgba(94, 75, 59, 0.08);
+
+  /* Transitions */
+  --t-fast: 0.15s ease;
+  --t-base: 0.2s ease;
+  --t-slow: 0.3s ease;
+}

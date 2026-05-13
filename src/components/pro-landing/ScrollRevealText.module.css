@@ -1,0 +1,38 @@
+.scrollRevealContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 5;
+  padding: 2rem 1.5rem;
+}
+
+.scrollRevealText {
+  text-align: center;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+  margin: 0;
+  padding: 0;
+  font-size: clamp(2.8rem, 7vw, 7rem);
+  max-width: 1200px;
+}
+
+.word {
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+.word:last-child { margin-right: 0; }
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  color: var(--heading-color);
+}
+.revealed { opacity: 1; transform: translateY(0); }
+.wordSpace { display: inline-block; width: 0.5rem; }

@@ -1,0 +1,241 @@
+/* Public landing — same structure as kyozo-pro-flow page.tsx,
+   recoloured to the KyozoVerse warm cream palette. */
+
+.page {
+  width: 100%;
+  background: var(--background-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Original kyozo-pro-flow page wrapper class — kept so cross-section
+   absolute positioning (BackgroundImages, the toolkit ring component)
+   still works the way it did in the source project. */
+.container {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+.outlineBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: var(--text-color);
+  font-weight: 500;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--text-color);
+  transition: all var(--t-base);
+  text-decoration: none !important;
+}
+.outlineBtn:hover {
+  background: var(--text-color);
+  color: #fff;
+}
+
+/* Ghost button — used inside sliding cards (white-on-color) */
+.cardCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 0.92rem;
+  padding: 0.65rem 1.35rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  transition: all var(--t-base);
+  text-decoration: none !important;
+}
+.cardCta:hover {
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text-color) !important;
+  border-color: rgba(255, 255, 255, 0.95);
+}
+.cardCta svg { transition: transform var(--t-base); }
+.cardCta:hover svg { transform: translateX(3px); }
+
+/* Big "Enter the dataroom" button used in BottomText */
+.bigEnterBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--text-color);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 1.05rem 2.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--text-color);
+  transition: background var(--t-base), transform var(--t-base), box-shadow var(--t-base);
+  text-decoration: none !important;
+  box-shadow: var(--shadow-md);
+}
+.bigEnterBtn:hover {
+  background: var(--heading-color);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+.bigEnterBtn svg { transition: transform var(--t-base); }
+.bigEnterBtn:hover svg { transform: translateX(4px); }
+
+/* ============================================================
+   ScrollReveal wrap — gives the section bg + padding
+   ============================================================ */
+.scrollWrap {
+  background: linear-gradient(180deg, var(--muted-bg) 0%, var(--background-color) 100%);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   Sliding card visuals — stand-ins for VideoWall / ParallaxGallery / iPhone
+   ============================================================ */
+.cv {
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 4 / 5;
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* A — VideoWall stand-in: animated tiled blocks */
+.cvA .cvFrame {
+  position: absolute;
+  inset: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+.cvTile {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.18));
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+  animation: tileShimmer 3s ease-in-out infinite;
+}
+.cvTile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: tileSheen 3.4s ease-in-out infinite;
+}
+@keyframes tileShimmer {
+  0%, 100% { transform: scale(1); opacity: 0.95; }
+  50%      { transform: scale(1.03); opacity: 1; }
+}
+@keyframes tileSheen {
+  0%, 30%  { transform: translateX(-100%); }
+  60%      { transform: translateX(120%); }
+  100%     { transform: translateX(120%); }
+}
+
+/* B — ParallaxGallery stand-in: three drifting layers */
+.cvB .cvParallax {
+  position: absolute;
+  inset: 0;
+}
+.cvLayer {
+  position: absolute;
+  border-radius: 18px;
+  opacity: 0.85;
+}
+.cvLayerBack {
+  inset: 28px 14px 90px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.18));
+  animation: drift 7s ease-in-out infinite;
+}
+.cvLayerMid {
+  inset: 56px 48px 56px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.3));
+  animation: drift 6s ease-in-out infinite reverse;
+}
+.cvLayerFront {
+  inset: 96px 28px 28px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.4));
+  animation: drift 5s ease-in-out infinite;
+}
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(6px, -8px); }
+}
+
+/* C — iPhone stand-in */
+.cvC {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 3 / 5;
+  max-width: 320px;
+}
+.cvDevice {
+  width: 260px;
+  height: 540px;
+  background: #1a1a1a;
+  border-radius: 36px;
+  padding: 14px;
+  position: relative;
+  box-shadow:
+    0 30px 60px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.cvDeviceNotch {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 22px;
+  background: #1a1a1a;
+  border-radius: 0 0 14px 14px;
+  z-index: 2;
+}
+.cvDeviceScreen {
+  width: 100%;
+  height: 100%;
+  background: var(--background-color);
+  border-radius: 24px;
+  padding: 56px 22px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.cvAppLine {
+  height: 12px;
+  border-radius: 999px;
+  background: var(--muted-bg);
+  animation: tileShimmer 3s ease-in-out infinite;
+}
+.cvAppGrid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.7rem;
+}
+.cvAppGrid span {
+  aspect-ratio: 1;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-gold-soft), var(--muted-bg));
+  border: 1px solid var(--border-color);
+}

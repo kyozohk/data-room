@@ -1,0 +1,182 @@
+.article { max-width: 1200px; margin: 0 auto; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 16rem;
+  gap: 3rem;
+}
+@media (max-width: 1100px) { .layout { grid-template-columns: 1fr; } }
+
+.main {
+  max-width: var(--content-max-width);
+  min-width: 0;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  padding: 0.35rem 0.7rem 0.35rem 0.55rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: all var(--t-base);
+}
+.backLink:hover {
+  color: var(--text-color);
+  background: var(--muted-bg);
+  border-color: var(--border-color);
+  text-decoration: none;
+  transform: translateX(-2px);
+}
+
+.crumbs {
+  display: flex; align-items: center; gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+.crumbChip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-gold-soft);
+  border: 1px solid rgba(168, 139, 106, 0.3);
+  color: var(--accent-gold);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Legacy crumb classes (kept for backward compat — not currently rendered) */
+.crumb, .crumbDivider, .crumbCurrent { display: none; }
+
+.title {
+  font-size: clamp(1.85rem, 3.4vw, 2.5rem);
+  line-height: 1.1;
+  margin: 0 0 0.85rem;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+  font-weight: 700;
+}
+
+.desc {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin: 0 0 1.2rem;
+  line-height: 1.6;
+  max-width: 45rem;
+}
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+.metaItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.metaItem svg { color: var(--accent-gold); }
+
+.prose {
+  font-size: 0.98rem;
+  line-height: 1.72;
+  color: var(--text-color);
+}
+.prose h1 { font-size: 1.75rem; margin-top: 0; color: var(--heading-color); }
+.prose h2 {
+  font-size: 1.4rem;
+  margin-top: 2.2em;
+  padding-top: 1em;
+  border-top: 1px solid var(--border-color);
+  color: var(--heading-color);
+}
+.prose h2:first-of-type { border-top: none; padding-top: 0; }
+.prose h3 { font-size: 1.15rem; margin-top: 1.8em; color: var(--heading-color); }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li { margin: 0.3em 0; }
+.prose li::marker { color: var(--accent-gold); }
+.prose img {
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+}
+.prose p { color: var(--text-color); }
+.prose strong { color: var(--heading-color); }
+.prose a {
+  color: var(--accent-gold);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.prose a:hover { color: var(--accent-rust); }
+
+/* TOC */
+.toc {
+  position: sticky;
+  top: calc(var(--header-height) + 1rem);
+  align-self: start;
+  font-size: 0.85rem;
+  border-left: 1px solid var(--border-color);
+  padding-left: 1.25rem;
+  max-height: calc(100vh - var(--header-height) - 2rem);
+  overflow-y: auto;
+}
+.tocLabel {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--accent-gold);
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+}
+.tocList { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.tocItem a {
+  color: var(--text-secondary);
+  display: block;
+  padding: 0.2rem 0;
+  line-height: 1.4;
+  transition: color var(--t-fast), transform var(--t-fast);
+  text-decoration: none;
+}
+.tocItem a:hover {
+  color: var(--text-color);
+  transform: translateX(2px);
+}
+.tocSub a { padding-left: 1rem; font-size: 0.8rem; opacity: 0.85; }
+.tocActive a {
+  color: var(--accent-gold) !important;
+  font-weight: 600;
+}
+
+/* HTML iframe wrap */
+.iframeWrap {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+.iframe {
+  display: block;
+  width: 100%;
+  height: 80vh;
+  border: 0;
+  background: #fff;
+}
+.iframeNote {
+  font-size: 0.78rem;
+  color: var(--text-tertiary);
+  padding: 0.6rem 0.9rem;
+  background: var(--muted-bg);
+  border-top: 1px solid var(--border-color);
+}

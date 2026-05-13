@@ -1,0 +1,72 @@
+.marqueeContainer {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding: 5rem 0 2rem;
+}
+
+.rowContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 5.6rem;
+  margin: 0;
+  padding: 0;
+}
+
+.row {
+  display: flex;
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  margin-right: 1rem;
+  transition: all 0.3s ease;
+  cursor: default;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color-strong);
+  white-space: nowrap;
+}
+
+.item svg { color: var(--accent-gold); flex-shrink: 0; }
+
+.item:hover {
+  transform: translateY(-2px);
+  background-color: var(--text-color);
+  color: #fff;
+  border-color: var(--text-color);
+  box-shadow: 0 6px 18px rgba(94, 75, 59, 0.18);
+}
+.item:hover svg { color: var(--accent-gold); }
+
+.gold { border-color: rgba(168, 139, 106, 0.5); }
+.rust { border-color: rgba(184, 119, 90, 0.5); }
+.sage { border-color: rgba(142, 163, 140, 0.5); }
+.cream { border-color: rgba(212, 197, 180, 0.7); }
+
+.toLeft { animation: scroll-left var(--scroll-duration, 80s) linear infinite; }
+.toRight { animation: scroll-right var(--scroll-duration, 80s) linear infinite; }
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 700px) {
+  .rowContainer { height: 4.5rem; }
+  .item { padding: 0.65rem 1.2rem; font-size: 0.92rem; margin-right: 0.7rem; }
+}

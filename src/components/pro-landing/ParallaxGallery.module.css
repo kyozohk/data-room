@@ -1,0 +1,63 @@
+/* Ported from kyozo-pro-flow/ParallaxGallery.module.scss */
+
+.parallaxGallery {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.parallaxGalleryBackground {
+  height: 100%;
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+.parallaxGalleryViewport {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.parallaxGalleryRelative {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+
+.parallaxImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 150ms ease-out;
+  z-index: 1;
+}
+.parallaxImage:nth-child(1) { z-index: 5; }
+.parallaxImage:nth-child(2) { z-index: 4; }
+.parallaxImage:nth-child(3) { z-index: 3; }
+.parallaxImage:nth-child(4) { z-index: 2; }
+.parallaxImage:nth-child(5) { z-index: 1; }
+
+.parallaxImageContainer {
+  overflow: hidden;
+  border-radius: 1rem;
+  background: var(--card-bg);
+  box-shadow: var(--shadow-lg);
+}
+@media (min-width: 768px) { .parallaxImageContainer { border-radius: 1.25rem; } }
+
+.parallaxImageImg {
+  height: 30vh;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+  filter: brightness(1.05) contrast(1.05);
+}
+@media (min-width: 768px)  { .parallaxImageImg { height: 35vh; } }
+@media (min-width: 1200px) { .parallaxImageImg { height: 40vh; } }

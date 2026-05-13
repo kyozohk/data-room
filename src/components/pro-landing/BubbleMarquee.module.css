@@ -1,0 +1,62 @@
+.bubbleMarqueeContainer {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  padding-top: 4rem;
+}
+
+.bubbleRowContainer {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  height: 6.5rem;
+  margin: 0;
+  padding: 0;
+}
+
+.bubbleRow {
+  display: flex;
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+  width: max-content;
+}
+
+.bubble {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem 3.2rem;
+  border-radius: 3rem;
+  font-weight: 500;
+  font-size: 1.4rem;
+  background-color: transparent;
+  border: 1.5px solid;
+  transition: all 0.3s ease;
+  cursor: default;
+  margin-right: -1px;
+  color: var(--text-color);
+  letter-spacing: -0.005em;
+}
+.bubble:hover {
+  background-color: var(--hover-bg, var(--accent-gold));
+  color: var(--hover-fg, #fff);
+  transform: translateY(-2px);
+}
+
+.toLeft { animation: scroll-left var(--scroll-duration, 100s) linear infinite; }
+.toRight { animation: scroll-right var(--scroll-duration, 100s) linear infinite; }
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes scroll-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+@media (max-width: 700px) {
+  .bubbleRowContainer { height: 4.5rem; }
+  .bubble { padding: 1rem 1.8rem; font-size: 1rem; margin-right: 0; }
+}
