@@ -1,6 +1,6 @@
 'use client';
 import Image from "next/image";
-import {Hero, BackgroundImages, SlidingCards, FeatureCard, ScrollRevealText, SlidingCard, ParallaxGallery, VideoWall, Toolkit, Marquee, BubbleMarquee, BottomText, PricingSection} from "../components/landing";
+import {Hero, BackgroundImages, SlidingCards, FeatureCard, ScrollRevealText, SlidingCard, ParallaxGallery, VideoWall, Toolkit, Marquee, BubbleMarquee, BottomText, PricingSection, LandingNav} from "../components/landing";
 import SpheresLanding from "../components/landing/SpheresLanding";
 import {Button as ButtonUI} from "../components/ui";
 
@@ -8,6 +8,7 @@ export default function Home() {
   
   return (
     <div className="container">
+      <LandingNav />
       <Hero text="Discover Your Creative Universe" />
       <BackgroundImages />
       <FeatureCard />
@@ -57,68 +58,31 @@ export default function Home() {
         />
       
       <PricingSection />      
-       
-        <BubbleMarquee 
+     <BubbleMarquee
           categories={[
             {
-              category: 'music',
-              items: [
-                { text: 'Rock' },
-                { text: 'Jazz' },
-                { text: 'R&B' },
-                { text: 'Trance' },
-                { text: 'Techno' },
-                { text: 'Hip Hop' },
-                { text: 'Classical' },
-              ]
+              category: 'inbox',
+              items: [ { text: 'Dance' }, { text: 'Music' }, { text: 'House' }, { text: 'Techno' }, { text: 'Trance' }]
             },
             {
-              category: 'classicism',
-              items: [
-                { text: 'Expressionism' },
-                { text: 'Futurism' },
-                { text: 'Classicism' },
-                { text: 'Cubism' },
-                { text: 'Surrealism' },
-                { text: 'Dadaism' },
-              ]
+              category: 'overview',
+              items: [ { text: 'Contemporary' }, { text: 'Surrealism' }, { text: 'Impressionism' }, { text: 'Art' }, { text: 'Cubism' }]
             },
             {
-              category: 'jewelry',
-              items: [
-                { text: 'Wood Burning' },
-                { text: 'Candle-making' },
-                { text: 'Crochet' },
-                { text: 'Jewelry' },
-                { text: 'Pottery' },
-                { text: 'Weaving' },
-              ]
+              category: 'broadcast',
+              items: [ { text: 'Craft' }, { text: 'Pottery' }, { text: 'Drawing' }, { text: 'Painting' }, { text: 'Jewelry' }]
             },
             {
-              category: 'vintage',
-              items: [
-                { text: 'Chic' },
-                { text: 'Grunge' },
-                { text: 'Vintage' },
-                { text: 'Boho' },
-                { text: 'Preppy' },
-                { text: 'Streetwear' },
-              ]
+              category: 'members',
+              items: [ { text: 'Haute Couture' }, { text: 'Fashion' }, { text: 'Streetwear' }, { text: 'Boho' }, { text: 'Avant Garde' }]
             },
             {
-              category: 'minimal',
-              items: [
-                { text: 'Stand-ups' },
-                { text: 'Musical' },
-                { text: 'Digital' },
-                { text: 'Theatre' },
-                { text: 'Dance' },
-                { text: 'Opera' },
-              ]
+              category: 'feed',
+              items: [ { text: 'Electronic' }, { text: 'Dance' }, { text: 'Performance' }, { text: 'House' }, { text: 'Techno' }, { text: 'Trance' }]
             }
           ]}
-        />
-     <BottomText text="Join the creative universe" fontSize="6rem" fontWeight={700} />
+        /> 
+      <BottomText text="Join the creative universe" fontSize="6rem" fontWeight={700} />
     </div>
   );
 }

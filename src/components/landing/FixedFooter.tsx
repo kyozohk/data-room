@@ -34,17 +34,15 @@ const FixedFooter: React.FC<FixedFooterProps> = ({ className = '' }) => {
   return (
     <footer className={`${styles.fixedFooter} ${className}`}>
       <div className={styles.container}>
-        <div className={styles.logoButtonContainer}>
-          <KyozoWordmark />
+          
           <ButtonUI
             variant="icon"
             onClick={openDialog}
             className={styles.joinButton}
             size="small"
           >
-            Join the waitlist
+            Enter Dataroom
           </ButtonUI>
-        </div>
       </div>
 
       <WaitlistDialog isOpen={isDialogOpen} onClose={closeDialog} />

@@ -1,8 +1,15 @@
+@import "tailwindcss";
 @import 'themes/theme-variables';
 
 :root {
   // KyozoVerse brand — light is the locked theme.
   @include light-theme;
+
+  // Shared gradient for all big display text
+  --display-gradient: linear-gradient(135deg, #8BAAC0 0%, #6AACB8 100%);
+  --display-color: #7AAAB8;
+  --display-font: var(--font-playfair, 'Playfair Display', Georgia, serif);
+  --display-weight: 400;
 
   // Font family variables — Inter (loaded via next/font in layout.tsx).
   --font-family: var(--font-inter, 'Inter'), -apple-system, BlinkMacSystemFont,
@@ -74,4 +81,22 @@ a {
 ::selection {
   background: var(--accent-gold-soft);
   color: var(--text-color);
+}
+
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-right {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-scroll-left {
+  animation: scroll-left var(--scroll-duration, 50s) linear infinite;
+}
+
+.animate-scroll-right {
+  animation: scroll-right var(--scroll-duration, 50s) linear infinite;
 }

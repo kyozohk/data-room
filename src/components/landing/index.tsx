@@ -16,3 +16,4 @@ export { default as Toolkit } from './Toolkit';
 export { default as VideoWall } from './VideoWall';
 export { default as ZoomText } from './ZoomText';
 export { default as Hero } from './Hero';
+export { default as LandingNav } from './LandingNav';

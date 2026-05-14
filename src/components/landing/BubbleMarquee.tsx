@@ -1,109 +1,104 @@
 'use client';
 
 import React, { useMemo } from 'react';
-import styles from './BubbleMarquee.module.scss';
-
-// Bubble row colours — KyozoVerse warm palette. Each category gets a
-// muted earth-tone border that sits comfortably on the #FDFCFA cream.
-const bubbleRowColors = {
-  music:        '#A88B6A', // gold (the brand primary accent)
-  artMovements: '#88796E', // taupe (headline tone)
-  crafts:       '#B8775A', // rust
-  fashion:      '#C19A6B', // softer gold
-  performance:  '#8EA38C', // sage
-  techno:       '#A88B6A',
-  futurism:     '#88796E',
-  classicism:   '#A89380', // light taupe
-  jewelry:      '#C9A668', // wheat
-  vintage:      '#B8775A',
-  minimal:      '#8EA38C',
-};
+import { cn } from '@/lib/utils';
+import { getCategoryColors, type CategoryKey } from '@/lib/theme-colors';
 
 interface BubbleItem {
   text: string;
-  color?: string;
-  spaceBefore?: 'none' | 'small' | 'medium';
-  spaceAfter?: 'none' | 'small' | 'medium';
+}
+
+interface BubbleCategory {
+  category: string;
+  items: BubbleItem[];
 }
 
 interface BubbleRowProps {
   items: BubbleItem[];
   direction: 'left' | 'right';
   speed?: number;
-  category: keyof typeof bubbleRowColors;
+  category: string;
+}
+
+function BubblePill({ text, bg, border }: { text: string; bg: string; border: string }) {
+  const [hovered, setHovered] = React.useState(false);
+  return (
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '0.75rem 3.5rem',
+        borderRadius: '9999px',
+        border: `1px solid ${border}`,
+        backgroundColor: hovered ? bg : 'transparent',
+        color: '#444444',
+        fontSize: '1.1rem',
+        fontWeight: 300,
+        whiteSpace: 'nowrap' as const,
+        cursor: 'default',
+        transition: 'background-color 0.25s ease',
+        flexShrink: 0,
+      }}
+    >
+      {text}
+    </div>
+  );
 }
 
 const BubbleRow: React.FC<BubbleRowProps> = ({ 
   items, 
   direction, 
-  speed = 10, 
+  speed = 80, 
   category 
 }) => {
-  const rowColor = bubbleRowColors[category];
-  
-  // Use items directly since we now have multiple items per row
-  const enhancedItems = useMemo(() => {
-    // No need for special handling since we have multiple items per row
-    return items;
-  }, [items]);
-  
-  // Create enough duplicates to fill the screen width
   const repeatedItems = useMemo(() => {
-    // Create enough sets of items to ensure the row is never empty
-    const repeated = [];
-    for (let i = 0; i < 10; i++) {
-      repeated.push(...enhancedItems);
+    const repeated: BubbleItem[] = [];
+    for (let i = 0; i < 4; i++) {
+      repeated.push(...items);
     }
     return repeated;
-  }, [enhancedItems]);
+  }, [items]);
+  
+  const colors = getCategoryColors(category as CategoryKey);
   
   return (
-    <div className={styles.bubbleRowContainer}>
+    <div className="relative w-full overflow-hidden h-20 mb-px p-0">
       <div 
-        className={`${styles.bubbleRow} ${direction === 'right' ? styles.toRight : styles.toLeft}`}
-        style={{ 
-          '--scroll-duration': `${speed}s`,
-        } as React.CSSProperties}
+        className={cn(
+          'absolute flex items-center whitespace-nowrap will-change-transform',
+          direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'
+        )}
+        style={{ '--scroll-duration': `${speed}s` } as React.CSSProperties}
       >
-        {repeatedItems.map((item, index) => {
-          // No additional spacing needed since bubbles now touch each other
-          const spacingStyle: React.CSSProperties = {};
-          
-          return (
-            <div 
-              key={`item-${index}`} 
-              className={styles.bubble}
-              style={{ 
-                borderColor: rowColor,
-                '--hover-bg': rowColor,
-                ...spacingStyle
-              } as React.CSSProperties}
-            >
-              {item.text}
-            </div>
-          );
-        })}
+        {repeatedItems.map((item, index) => (
+          <BubblePill
+            key={`item-${index}`}
+            text={item.text}
+            bg={colors.bg}
+            border={colors.border}
+          />
+        ))}
       </div>
     </div>
   );
 };
 
 interface BubbleMarqueeProps {
-  categories: {
-    category: keyof typeof bubbleRowColors;
-    items: BubbleItem[];
-  }[];
+  categories: BubbleCategory[];
 }
 
 const BubbleMarquee: React.FC<BubbleMarqueeProps> = ({ categories }) => {
   return (
-    <div className={styles.bubbleMarqueeContainer}>
+    <div className="w-full block overflow-hidden pt-32">
       {categories.map((row, index) => (
         <BubbleRow 
           key={`row-${index}`}
           items={row.items}
           direction={index % 2 === 0 ? 'left' : 'right'}
-          speed={100} // Moderate speed for smooth animation
+          speed={100}
           category={row.category}
         />
       ))}

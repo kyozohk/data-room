@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display } from "next/font/google";
 import "../styles/globals.scss";
 
 import { ThemeProvider } from "../context/ThemeContext";
@@ -16,11 +16,17 @@ const inter = Inter({
   display: "swap",
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Kyozo · Discover Your Creative Universe",
   description:
     "Kyozo is an ecosystem of creative communities — exclusive access, insider insights, and tools to grow your audience.",
-  icons: { icon: "/favicon.png" },
+  icons: { icon: "/favicon.svg" },
 };
 
 export default function RootLayout({
@@ -29,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" data-theme="light" className={inter.variable}>
+    <html lang="en" data-theme="light" className={`${inter.variable} ${playfair.variable}`}>
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider>
           {children}

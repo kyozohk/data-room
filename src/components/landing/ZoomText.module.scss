@@ -16,7 +16,13 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   transform-origin: center center;
-  color: var(--text-color);
+  font-family: var(--display-font);
+  font-weight: var(--display-weight, 400);
+  background-image: var(--display-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
   
   &.loaded {
     opacity: 1;
@@ -36,7 +42,6 @@
 
 .letter {
   display: inline-block;
-  color: var(--text-color);
 }
 
 .space {

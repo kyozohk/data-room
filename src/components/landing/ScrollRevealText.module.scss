@@ -15,7 +15,9 @@
 .scrollRevealText {
   text-align: center;
   line-height: 1.1;
-  color: var(--text-color);
+  font-family: var(--display-font);
+  font-weight: var(--display-weight, 400);
+  color: var(--display-color, #7AAAB8);
   margin: 0;
   padding: 0;
   
