@@ -15,14 +15,17 @@
 .scrollRevealText {
   text-align: center;
   line-height: 1.1;
-  font-family: var(--display-font);
-  font-weight: var(--display-weight, 400);
-  color: var(--display-color, #7AAAB8);
+  font-weight: 800;
+  color: var(--text-color);
   margin: 0;
   padding: 0;
-  
+
   @media (max-width: 768px) {
-    font-size: 4rem !important;
+    font-size: 2.6rem !important;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem !important;
   }
 }
 

@@ -7,7 +7,7 @@
   margin-top: 10rem;
   margin-left: 2rem;
   margin-bottom: 6rem;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Top align all content */  // gap: 30px;
@@ -15,13 +15,23 @@
   overflow: hidden;
   z-index: 3; /* Ensure it's above background images */
   isolation: isolate; /* Create a new stacking context */
-  
+
   border-radius: 30px;
   backdrop-filter: blur(10px);
   background-color: var(--card-bg);
   border: 0.5px solid var(--text-secondary);
   box-shadow: var(--card-shadow);
-}   
+
+  @media (max-width: 768px) {
+    width: calc(100% - 2rem);
+    margin-left: 1rem;
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+    height: auto;
+    min-height: calc(100vh - 6rem);
+    border-radius: 20px;
+  }
+}
 
 .cardContent {
   display: flex;
@@ -30,9 +40,12 @@
   align-items: flex-end; /* Bottom align items horizontally */
   justify-content: space-between;
   margin-top: auto; /* Push content to bottom of container */
-  
+
   @media (max-width: 768px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 0;
   }
 }
 
@@ -45,6 +58,15 @@
   margin-bottom: 30px;
   justify-content: flex-end; /* Bottom align content */
   height: 100%; /* Take full height of parent */
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 0 1.5rem;
+    margin-bottom: 1.5rem;
+    height: auto;
+    justify-content: flex-start;
+    padding-top: 2.5rem;
+  }
 }
 
 .rightContent {
@@ -64,6 +86,14 @@
   background-clip: text;
   line-height: 1.0; /* Reduced line height to bring lines closer together */
   color: var(--heading-color);
+
+  @media (max-width: 768px) {
+    font-size: 2.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.4rem;
+  }
 }
 
 .cardDescription {
@@ -75,6 +105,12 @@
   // padding-right: 80px
   // width: 65%;
   color: var(--text-color);
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .phoneContainer {
@@ -87,6 +123,14 @@
   overflow: hidden; /* Hide the overflow to show only half */
   display: flex;
   justify-content: flex-start; /* Align content to the left */
+
+  @media (max-width: 768px) {
+    width: 240px;
+    height: 380px;
+    margin-left: 0;
+    margin-bottom: 0;
+    margin-top: 0.5rem;
+  }
 }
 
 .phoneImage {
@@ -96,6 +140,11 @@
   height: 594px; /* Reduced by 10% from 660px */
   margin-bottom: -30px; /* Push bottom half outside the container */
   z-index: 1;
+
+  @media (max-width: 768px) {
+    width: 220px;
+    height: 350px;
+  }
 }
 
 .backgroundGradient {
@@ -107,6 +156,15 @@
   transform: translateY(-50%);
   z-index: 0;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    width: 460px;
+    height: 460px;
+    right: -25%;
+    top: auto;
+    bottom: -20%;
+    transform: none;
+  }
 }
 
 .phoneBackgroundGradient {
@@ -116,6 +174,11 @@
   background-color: transparent;
   position: relative;
   overflow: hidden;
+
+  @media (max-width: 768px) {
+    width: 460px;
+    height: 460px;
+  }
 
   
   // First animated expanding ring

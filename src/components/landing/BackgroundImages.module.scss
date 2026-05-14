@@ -176,17 +176,24 @@ $ring-four-color: #B59962;
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
-  .leftImage, .rightImage {
-    width: 60%;
+  // Per design choice: hide the decorative background flotsam on phones —
+  // the giant gradients & toolkit ring stack overflow narrow viewports.
+  .leftImage,
+  .rightImage,
+  .bottomRight,
+  .middleTriangle,
+  .middleCircle,
+  .toolkitCircleComponent {
+    display: none !important;
+  }
+
+  .backgroundContainer {
+    margin-top: 0;
   }
 }
 
 @media (max-width: 480px) {
   .backgroundContainer {
-    height: 30vh;
-  }
-  
-  .leftImage, .rightImage {
-    width: 80%;
+    height: 0;
   }
 }

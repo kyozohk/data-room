@@ -11,8 +11,18 @@ interface SlidingCardsProps {
 const SlidingCards: React.FC<SlidingCardsProps> = ({ children, className = '' }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
   const childrenArray = React.Children.toArray(children);
   const numCards = childrenArray.length;
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const mql = window.matchMedia('(max-width: 768px)');
+    const update = () => setIsMobile(mql.matches);
+    update();
+    mql.addEventListener('change', update);
+    return () => mql.removeEventListener('change', update);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -52,7 +62,8 @@ const SlidingCards: React.FC<SlidingCardsProps> = ({ children, className = '' })
 
   // Each card's animation happens over a consistent portion of the scroll.
   // We define the scroll height per card in vh units for consistent spacing.
-  const scrollPerCard = 120; // vh - increased for more consistent spacing
+  // Phones get a tighter scroll budget so the section doesn't stretch forever.
+  const scrollPerCard = isMobile ? 80 : 120; // vh
   // The animation (translateY) occurs over the full scroll distance for smoother transitions.
   const transitionDurationRatio = 1.0; // Use full distance for consistent spacing
 

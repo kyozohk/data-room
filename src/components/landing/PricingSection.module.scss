@@ -10,6 +10,12 @@
   overflow: hidden;
   color: var(--text-color);
   margin-top: 8rem;
+
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+    min-height: auto;
+    padding: 3rem 0;
+  }
   
   .background {
     position: absolute;
@@ -77,11 +83,23 @@
     max-width: 80rem;
     margin: 0 auto;
 
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+      gap: 1.25rem;
+      padding: 0 1.25rem;
+    }
+
     .pricingCardWrapper {
       display: flex;
       justify-content: center;
       flex: 1;
       max-width: 35rem;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        max-width: 100%;
+      }
     }
   }
 

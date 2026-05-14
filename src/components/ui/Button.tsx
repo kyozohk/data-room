@@ -4,7 +4,7 @@ import styles from './Button.module.scss';
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'primary' | 'outline' | 'outline-only' | 'solid' | 'ghost' | 'icon';
+  variant?: 'primary' | 'outline' | 'outline-only' | 'solid' | 'ghost' | 'icon' | 'cta';
   size?: 'small' | 'medium' | 'large';
   onClick?: () => void;
   href?: string;

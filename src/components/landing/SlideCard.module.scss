@@ -4,6 +4,13 @@
   width: calc(100% - 4rem); /* Account for 5rem left and 5rem right margins */
   height: calc(100vh - 8rem); /* Account for top and bottom margins */
   margin-left: 2rem;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 2rem);
+    height: calc(100vh - 4rem);
+    margin-left: 1rem;
+    border-radius: 20px;
+  }
   // margin-bottom: -12rem;
   // margin-top: 4rem;
   display: flex;
@@ -59,10 +66,11 @@
   padding-left: 40px; /* Increased left padding */
   justify-content: flex-start;
   height: 100%;
-  
+
   @media (max-width: 768px) {
     width: 100%;
-    padding: 0 20px;
+    padding: 1.5rem 1.25rem 0.75rem;
+    flex: 0 0 auto;
   }
 }
 
@@ -79,6 +87,16 @@
   // padding-top: 40px; /* Match the top padding of left content */
   /* Removed top: -8rem to fix alignment */
   height: 100%;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: 0 1rem 1rem;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .categoryLabel {
@@ -100,9 +118,13 @@
   background-clip: text;
   line-height: 1.0;
   color: var(--heading-color);
-  
+
   @media (max-width: 768px) {
-    font-size: 3.5rem;
+    font-size: 2.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
   }
 }
 

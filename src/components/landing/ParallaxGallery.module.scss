@@ -71,11 +71,17 @@
   -moz-user-drag: none;
   -o-user-drag: none;
   filter: brightness(1.1) contrast(1.1); // Enhance image appearance
-  
+
+  @media (max-width: 768px) {
+    height: 16vh;
+    max-width: 60vw;
+    object-fit: cover;
+  }
+
   @media (min-width: 768px) {
     height: 35vh;
   }
-  
+
   @media (min-width: 1200px) {
     height: 40vh;
   }

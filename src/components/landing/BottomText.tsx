@@ -72,7 +72,7 @@ const BottomText: React.FC<BottomTextProps> = ({
       {/* Button */}
       <div className={`${styles.buttonContainer} ${isLoaded ? styles.loaded : styles.loading}`}>
         <ButtonUI
-          variant="outline-only"
+          variant="cta"
           size="large"
           onClick={() => {
             if (typeof window !== 'undefined') {

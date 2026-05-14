@@ -38,6 +38,15 @@ $row-height-rem: 7.5rem; // Height of each row
   height: 100%;
   min-height: 400px; // Ensure minimum height for proper display
   max-height: 600px; // Constrain height to fit within card
+
+  // On phones the brick widths blow out the card — collapse the wall
+  // to a single scaled column. Animation still runs.
+  @media (max-width: 768px) {
+    min-height: 240px;
+    max-height: 340px;
+    transform: scale(0.45);
+    transform-origin: center center;
+  }
 }
 
 // Viewport for the scrolling rows

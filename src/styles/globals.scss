@@ -100,3 +100,20 @@ a {
 .animate-scroll-right {
   animation: scroll-right var(--scroll-duration, 50s) linear infinite;
 }
+
+/* Section wrapper for the "Creatives are not creators." reveal block.
+   Used inline from app/page.tsx — keeps generous breathing room on desktop
+   and clamps the gutters on phones. */
+.scrollRevealSection {
+  margin-top: 20rem;
+  margin-bottom: 20rem;
+  padding-left: 10%;
+  padding-right: 10%;
+
+  @media (max-width: 768px) {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+}

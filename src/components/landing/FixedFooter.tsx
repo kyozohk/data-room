@@ -34,19 +34,16 @@ const FixedFooter: React.FC<FixedFooterProps> = ({ className = '' }) => {
   return (
     <footer className={`${styles.fixedFooter} ${className}`}>
       <div className={styles.container}>
-      <div className={`${styles.buttonContainer} ${styles.loaded}`}>
-              <ButtonUI
-                variant="outline-only"
-                size="large"
-                onClick={() => {
-                  if (typeof window !== 'undefined') {
-                    window.dispatchEvent(new Event('open-waitlist'));
-                  }
-                }}
-              >
-                Enter Dataroom
-              </ButtonUI>
-            </div>
+        <div className={styles.logoButtonContainer}>
+          <ButtonUI
+            variant="cta"
+            size="small"
+            onClick={openDialog}
+            className={styles.joinButton}
+          >
+            Enter the Dataroom
+          </ButtonUI>
+        </div>
       </div>
 
       <WaitlistDialog isOpen={isDialogOpen} onClose={closeDialog} />

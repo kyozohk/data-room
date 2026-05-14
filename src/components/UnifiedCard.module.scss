@@ -76,28 +76,65 @@
     width: calc(100% - 4rem);
     height: calc(100vh - 8rem);
     margin-left: 2rem;
-    
+
     .cardContent {
       gap: 40px;
       align-items: flex-end;
       margin-top: auto;
       padding-top: 40px;
     }
-    
+
     .leftContent {
       width: 50%;
       padding: 30px 30px 30px 40px;
       padding-top: 40px;
     }
-    
+
     .rightContent {
       margin-left: -4rem;
       width: 50%;
       align-items: flex-start;
     }
-    
+
     .cardDescription, .cardText {
       width: 65%;
+    }
+
+    @media (max-width: 768px) {
+      width: calc(100% - 2rem);
+      margin-left: 1rem;
+      height: calc(100vh - 4rem);
+      border-radius: 20px;
+
+      .cardContent {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding-top: 1.5rem;
+        align-items: stretch;
+        height: 100%;
+        margin-top: 0;
+        overflow: hidden;
+      }
+
+      .leftContent {
+        width: 100%;
+        padding: 1.5rem 1.25rem 1rem;
+        flex: 0 0 auto;
+      }
+
+      .rightContent {
+        width: 100%;
+        margin-left: 0;
+        flex: 1 1 auto;
+        min-height: 0;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem 1rem;
+      }
+
+      .cardDescription, .cardText {
+        width: 100%;
+      }
     }
   }
   
@@ -194,23 +231,44 @@
 }
 
 .cardTitle {
-  font-weight: var(--display-weight, 400);
-  font-family: var(--display-font);
+  font-weight: 700;
   margin: 0;
-  background-image: var(--display-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
+  color: var(--heading-color);
 }
 
 // Variant-specific title sizes
 .sliding .cardTitle {
   font-size: 4.4rem;
   line-height: 1.0;
-  
+
   @media (max-width: 768px) {
-    font-size: 3.5rem;
+    font-size: 2.4rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2rem;
+  }
+}
+
+.sliding .cardText {
+  @media (max-width: 768px) {
+    font-size: 0.85rem;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+}
+
+.sliding .categoryLabel {
+  @media (max-width: 768px) {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+.sliding .buttonContainer {
+  @media (max-width: 768px) {
+    margin-top: 0.5rem;
   }
 }
 

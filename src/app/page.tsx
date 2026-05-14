@@ -12,8 +12,8 @@ export default function Home() {
       <Hero text="Welcome to Kyozo" />
       <BackgroundImages />
       <FeatureCard />
-      <div className="my-80 bg-white" style={{ paddingLeft: '10%', paddingRight: '10%' }}>
-        <ScrollRevealText text="Creatives are not creators." />      
+      <div className="scrollRevealSection bg-white">
+        <ScrollRevealText text="Creatives are not creators." />
       </div>
       <SlidingCards>
         <SlidingCard

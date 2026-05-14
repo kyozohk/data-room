@@ -16,19 +16,24 @@
   line-height: 1.1;
   letter-spacing: -0.02em;
   transform-origin: center center;
-  font-family: var(--display-font);
-  font-weight: var(--display-weight, 400);
-  background-image: var(--display-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  
+  color: var(--text-color);
+
+  // Inline font-size from props would dwarf phones — override at breakpoints.
+  @media (max-width: 768px) {
+    font-size: 3rem !important;
+    padding: 0 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 2.4rem !important;
+    padding: 0 1rem;
+  }
+
   &.loaded {
     opacity: 1;
     transform: scale(1);
   }
-  
+
   &.loading {
     opacity: 0.3;
     transform: scale(0.1);

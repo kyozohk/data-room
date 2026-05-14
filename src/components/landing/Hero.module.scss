@@ -90,12 +90,57 @@
 
 .heroTitle {
   font-size: 7rem;
-  font-weight: var(--display-weight, 400);
-  font-family: var(--display-font);
+  font-weight: 800;
   text-align: center;
   max-width: 1200px;
   line-height: 1.1;
-  color: var(--display-color, #7AAAB8);
+  color: var(--heading-color);
+  padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    font-size: clamp(3rem, 12vw, 4.5rem);
+    padding: 0 1.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: clamp(2.6rem, 13vw, 3.6rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .topLeft {
+    width: 800px;
+    height: 600px;
+    top: -50px;
+    opacity: 0.6;
+  }
+
+  .topRight {
+    width: 600px;
+    height: 800px;
+    top: -200px;
+    opacity: 0.45;
+  }
+
+  .bottomRight {
+    width: 1200px;
+    height: 1200px;
+    bottom: -800px;
+    right: -2rem;
+    opacity: 0.6;
+  }
+
+  .topAnimationContainer {
+    max-width: 90vw;
+    height: 320px;
+    top: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .topAnimationContainer {
+    height: 240px;
+  }
 }
 
 .word {

@@ -128,6 +128,24 @@
   }
 }
 
+.cta {
+  background: #7AAAB8;
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  
+  &:hover, &:focus {
+    background: #5E9EB0;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(106, 172, 184, 0.40);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
 .icon {
   background: transparent;
   color: var(--text-secondary);
