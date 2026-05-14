@@ -76,9 +76,13 @@ body[data-theme='dark']::before {
   display: none;
 }
 
+/* Page root — full-width up to 1920px, then auto-centered on ultrawide
+   displays so the hero, cards, and section content stay visually anchored
+   to the middle of the screen instead of pinned to the left edge. */
 .container {
   width: 100%;
-  margin: 0;
+  max-width: 1920px;
+  margin: 0 auto;
   padding: 0;
   position: relative;
 }
