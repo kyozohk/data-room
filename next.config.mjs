@@ -11,6 +11,11 @@ const nextConfig = {
         source: '/reports/cto',
         destination: '/reports/cto.html',
       },
+      // Clean URL for the Vision report — /reports/vision serves public/reports/vision.html
+      {
+        source: '/reports/vision',
+        destination: '/reports/vision.html',
+      },
     ];
   },
 };
