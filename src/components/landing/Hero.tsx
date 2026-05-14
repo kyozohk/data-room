@@ -9,7 +9,7 @@ interface HeroProps {
 }
 
 const Hero: React.FC<HeroProps> = ({ 
-  text = 'Discover Your Creative Universe'
+  text = 'Welcome to Kyozo.'
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const words = text.split(' ');

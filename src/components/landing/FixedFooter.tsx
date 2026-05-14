@@ -14,7 +14,7 @@ interface FixedFooterProps {
  * Fixed bottom CTA pill — KyozoVerse brand:
  *  - cream pill on cream page
  *  - inline "Kyozo" wordmark in brown
- *  - beige "Join the waitlist" button (KyozoVerse primary)
+ *  - beige "Enter the Dataroom" button (KyozoVerse primary)
  */
 const FixedFooter: React.FC<FixedFooterProps> = ({ className = '' }) => {
   const pathname = usePathname();
@@ -34,15 +34,19 @@ const FixedFooter: React.FC<FixedFooterProps> = ({ className = '' }) => {
   return (
     <footer className={`${styles.fixedFooter} ${className}`}>
       <div className={styles.container}>
-          
-          <ButtonUI
-            variant="icon"
-            onClick={openDialog}
-            className={styles.joinButton}
-            size="small"
-          >
-            Enter Dataroom
-          </ButtonUI>
+      <div className={`${styles.buttonContainer} ${styles.loaded}`}>
+              <ButtonUI
+                variant="outline-only"
+                size="large"
+                onClick={() => {
+                  if (typeof window !== 'undefined') {
+                    window.dispatchEvent(new Event('open-waitlist'));
+                  }
+                }}
+              >
+                Enter Dataroom
+              </ButtonUI>
+            </div>
       </div>
 
       <WaitlistDialog isOpen={isDialogOpen} onClose={closeDialog} />

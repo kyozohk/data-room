@@ -58,7 +58,7 @@ const faqs = [
   },
   {
     q: 'How do I get early access?',
-    a: 'Click "Join the Waitlist" and share a few details about you and your community. Our team will reach out with next steps as slots open up.',
+    a: 'Click "Enter the Dataroom" and share a few details about you and your community. Our team will reach out with next steps as slots open up.',
   },
 ];
 
@@ -89,7 +89,7 @@ const SpheresLanding: React.FC = () => {
             </p>
             <div className={styles.heroActions}>
               <button className={styles.btnPrimary} onClick={openDialog}>
-                Join the Waitlist →
+                Enter the Dataroom →
               </button>
               <a
                 href="https://www.kyozo.com"
@@ -191,7 +191,7 @@ const SpheresLanding: React.FC = () => {
             </p>
             <div style={{ marginTop: '2rem', display: 'flex', justifyContent: 'center' }}>
               <button className={styles.btnPrimary} onClick={openDialog}>
-                Join the Waitlist →
+                Enter the Dataroom →
               </button>
             </div>
             <div className={styles.waitlistBullets}>

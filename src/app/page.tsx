@@ -8,35 +8,35 @@ export default function Home() {
   
   return (
     <div className="container">
-      <LandingNav />
-      <Hero text="Discover Your Creative Universe" />
+      {/* <LandingNav /> */}
+      <Hero text="Welcome to Kyozo" />
       <BackgroundImages />
       <FeatureCard />
       <div className="my-80 bg-white" style={{ paddingLeft: '10%', paddingRight: '10%' }}>
-        <ScrollRevealText text="Where creative minds converge" />      
+        <ScrollRevealText text="Creatives are not creators." />      
       </div>
       <SlidingCards>
         <SlidingCard
           subtitle="INSIDER ACCESS"
-          title="Exclusive access and insights"
+          title="We provide the infrastructure. You own the audience."
           text="Experience the creative world through an insider's lens. Kyozo is an eco-system of creative communities - that gives you exclusive access to updates and insights from the creative luminaries driving cultural evolution."
-          button={<ButtonUI variant="outline-only" size="medium" href="#">Join the waitlist</ButtonUI>}
+          button={<ButtonUI variant="outline-only" size="medium" href="#">Enter the Dataroom</ButtonUI>}
           content={<VideoWall />}
           backgroundColor="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
         />
         <SlidingCard
           subtitle="COMMUNITY ACCESS"
-          title="Engage with visionary communities"
+          title="Audiences are fragmented. Nothing compounds."
           text="Join and interact with diverse communities, from niche artistic circles to industry-leading collectives. Engage with passionate individuals who share your creative interests."
-          button={<ButtonUI variant="outline-only" size="medium" href="#">Join the waitlist</ButtonUI>}
+          button={<ButtonUI variant="outline-only" size="medium" href="#">Enter the Dataroom</ButtonUI>}
           content={<ParallaxGallery />}
           backgroundColor="linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
         />
         <SlidingCard
           subtitle="CREATOR TOOLS"
-          title="Grow your creative community"
+          title="Both sides want the same thing. The infrastructure is missing."
           text="Are you a creative professional, community organizer, or small business owner working within the creative industries? We understand the challenges of nurturing and growing a dedicated audience, so we built KyozoPro, a comprehensive platform that enhances genuine connections and unlocks new opportunities."
-          button={<ButtonUI variant="outline-only" size="medium" href="#">Join the waitlist</ButtonUI>}
+          button={<ButtonUI variant="outline-only" size="medium" href="#">Enter the Dataroom</ButtonUI>}
           content={<Image src="/card-3.png" alt="Phone" width={600} height={800} style={{objectFit: 'contain', maxHeight: '100%', maxWidth: '100%'}} />}
           backgroundColor="linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
         />        

@@ -34,7 +34,7 @@ const PricingSection = () => {
             </div>
           ))}
         </div>
-        <ButtonUI variant="outline-only" href="#">Join the waitlist</ButtonUI>
+        <ButtonUI variant="outline-only" href="#">Enter the Dataroom</ButtonUI>
       </div>
     </section>
   );

@@ -77,7 +77,7 @@ const WaitlistDialog: React.FC<WaitlistDialogProps> = ({ isOpen, onClose }) => {
           <>
             <div className={styles.header}>
               <div className={styles.badge}>Private Beta</div>
-              <h2 className={styles.title}>Join the Waitlist</h2>
+              <h2 className={styles.title}>Enter the Dataroom</h2>
               <p className={styles.subtitle}>
                 Tell us a little about you and your community. We&apos;ll reach out with early access details.
               </p>

@@ -17,7 +17,7 @@ const FeatureCard = () => {
             Connect with visionary creators and forward-thinking communities.
           </p>
           <div>
-          <ButtonUI variant="outline-only" size="medium" href="#">Join the waitlist</ButtonUI>
+          <ButtonUI variant="outline-only" size="medium" href="#">Enter the Dataroom</ButtonUI>
           </div>
         </div>
         

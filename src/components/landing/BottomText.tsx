@@ -80,7 +80,7 @@ const BottomText: React.FC<BottomTextProps> = ({
             }
           }}
         >
-          Join the Waitlist
+          Enter the Dataroom
         </ButtonUI>
       </div>
       

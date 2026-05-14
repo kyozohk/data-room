@@ -2,7 +2,7 @@
 
 import React, { useMemo } from 'react';
 import { cn } from '@/lib/utils';
-import { getCategoryColors, type CategoryKey } from '@/lib/theme-colors';
+import { getCategoryColors, hexToRgba, type CategoryKey } from '@/lib/theme-colors';
 
 interface BubbleItem {
   text: string;
@@ -20,7 +20,7 @@ interface BubbleRowProps {
   category: string;
 }
 
-function BubblePill({ text, bg, border }: { text: string; bg: string; border: string }) {
+function BubblePill({ text, bg, hoverBg, border }: { text: string; bg: string; hoverBg: string; border: string }) {
   const [hovered, setHovered] = React.useState(false);
   return (
     <div
@@ -30,16 +30,16 @@ function BubblePill({ text, bg, border }: { text: string; bg: string; border: st
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: '0.75rem 3.5rem',
+        padding: '1.5rem 3.5rem',
         borderRadius: '9999px',
         border: `1px solid ${border}`,
-        backgroundColor: hovered ? bg : 'transparent',
+        backgroundColor: hovered ? hoverBg : bg,
         color: '#444444',
-        fontSize: '1.1rem',
+        fontSize: '1rem',
         fontWeight: 300,
         whiteSpace: 'nowrap' as const,
         cursor: 'default',
-        transition: 'background-color 0.25s ease',
+        transition: 'background-color 0.2s ease',
         flexShrink: 0,
       }}
     >
@@ -64,11 +64,13 @@ const BubbleRow: React.FC<BubbleRowProps> = ({
   
   const colors = getCategoryColors(category as CategoryKey);
   
+  const hoverBg = hexToRgba(colors.border, 0.4);
+
   return (
-    <div className="relative w-full overflow-hidden h-20 mb-px p-0">
+    <div className="w-full overflow-hidden">
       <div 
         className={cn(
-          'absolute flex items-center whitespace-nowrap will-change-transform',
+          'flex items-center whitespace-nowrap will-change-transform',
           direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'
         )}
         style={{ '--scroll-duration': `${speed}s` } as React.CSSProperties}
@@ -78,6 +80,7 @@ const BubbleRow: React.FC<BubbleRowProps> = ({
             key={`item-${index}`}
             text={item.text}
             bg={colors.bg}
+            hoverBg={hoverBg}
             border={colors.border}
           />
         ))}
@@ -98,7 +101,7 @@ const BubbleMarquee: React.FC<BubbleMarqueeProps> = ({ categories }) => {
           key={`row-${index}`}
           items={row.items}
           direction={index % 2 === 0 ? 'left' : 'right'}
-          speed={100}
+          speed={20}
           category={row.category}
         />
       ))}
