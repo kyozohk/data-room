@@ -42,7 +42,10 @@ body {
   padding: 4mm 0 4mm;
   margin-bottom: 5mm;
   border-bottom: 2.5px solid var(--navy);
+  page-break-after: avoid;
 }
+.section { page-break-inside: avoid; }
+h1, h2, h3 { page-break-after: avoid; }
 .stb-num {
   font-family: 'Inter', sans-serif;
   font-size: 7pt;
@@ -82,18 +85,25 @@ body {
   margin: 0 auto 24px;
   position: relative;
   box-shadow: 0 4px 32px rgba(0,0,0,0.12);
-  overflow: hidden;
+  page-break-before: always;
 }
+.page:first-of-type, .page.cover { page-break-before: auto; }
 
 .page-inner {
-  padding: 16mm 18mm 20mm;
+  padding: 14mm 24mm 16mm;
 }
 
 @media print {
   body { background: none; }
-  .page { margin: 0; box-shadow: none; page-break-after: always; }
+  .page { margin: 0 !important; box-shadow: none !important; page-break-before: always !important; }
+  .page-inner { padding: 14mm 24mm 16mm !important; }
   @page { size: A4; margin: 0; }
 }
+
+/* Keep tightly grouped content together where possible */
+.founder-insight, .callout, .two-col > div, table { page-break-inside: avoid; }
+h1, h2, h3 { page-break-after: avoid; }
+.section-title-block { page-break-after: avoid; page-break-inside: avoid; }
 
 /* ─── COVER ─── */
 .cover {
@@ -899,7 +909,7 @@ ul.doc-list li strong { color: var(--text); font-weight: 600; }
      PAGE — EXECUTIVE SUMMARY
 ════════════════════════════════════════ -->
 <div class="page" id="page-exec-summary">
-  <div style="padding:13mm 18mm 12mm;display:flex;flex-direction:column;min-height:297mm;">
+  <div style="padding:10mm 22mm 8mm;display:flex;flex-direction:column;font-size:9.5pt;line-height:1.5;">
 
     <!-- ── HEADER ── -->
     <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:4mm;margin-bottom:7mm;border-bottom:2px solid var(--navy);">
@@ -1977,7 +1987,7 @@ ul.doc-list li strong { color: var(--text); font-weight: 600; }
 <!-- ═══════════════════════════════════════
      PAGE 8b — KYOZO AS AI NODE
 ════════════════════════════════════════ -->
-<div class="page" id="page-ai-node">
+<div class="page" id="page-ai-node" style="padding:14mm 24mm 16mm;">
   <div class="page-header">
     <svg viewBox="0 0 497 129" xmlns="http://www.w3.org/2000/svg" style="height:13px;width:auto;color:#1E3A5F"><use href="#kyozo-logo"/></svg>
     <div class="page-header-label">Section 08b &nbsp;·&nbsp; <span>Architecture &amp; AI</span></div>
@@ -1991,7 +2001,7 @@ ul.doc-list li strong { color: var(--text); font-weight: 600; }
   </div>
 
   <!-- DIAGRAM -->
-  <div style="margin:0 16mm 6mm;position:relative;">
+  <div style="margin:0 0 6mm;position:relative;">
     <svg viewBox="0 0 580 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
       <defs>
         <marker id="arr" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
@@ -2068,7 +2078,7 @@ ul.doc-list li strong { color: var(--text); font-weight: 600; }
   </div>
 
   <!-- BOTTOM THREE COLUMNS -->
-  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;margin:0 16mm;">
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;margin:0;">
     <div style="border-left:2px solid var(--navy);padding:2mm 4mm;">
       <div style="font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);margin-bottom:2mm;">The problem with AI alone</div>
       <p style="font-size:7.5pt;line-height:1.6;color:var(--mid);margin:0;">AI can generate, schedule, and broadcast. It cannot earn the opt-in. Without a consented list, every AI output goes nowhere. The audience has to be built first — by trust, by presence, by a human institution.</p>
@@ -2403,10 +2413,9 @@ ul.doc-list li strong { color: var(--text); font-weight: 600; }
       <p>The thesis is simple: if you want serious creatives to trust your platform, show them serious creative work. Not marketing. Not content. Work.</p>
     </div>
 
-    <!-- IMAGE PLACEHOLDER — full width -->
-    <div style="width:100%;height:55mm;background:#e8e4dc;border:1.5px dashed #bbb;border-radius:4px;display:flex;align-items:center;justify-content:center;margin:4mm 0;flex-direction:column;gap:2mm;">
-      <div style="font-family:'Inter',sans-serif;font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#999;">Image Placeholder</div>
-      <div style="font-size:8pt;color:#bbb;">High-resolution photography — Kyozo community / event / film production</div>
+    <!-- IMAGE — The Philosophy of Cool · documentary cover -->
+    <div style="width:100%;margin:4mm 0;border-radius:4px;overflow:hidden;">
+      <img src="philosophy_of_cool.jpg" alt="The Philosophy of Cool — documentary/art film cover" style="width:100%;height:auto;display:block;" />
     </div>
 
     <div class="rule"></div>
